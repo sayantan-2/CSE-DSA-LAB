@@ -1,0 +1,1 @@
+Check if all items in the tuple are the same.

@@ -1,0 +1,1 @@
+Remove all occurrences of a specific item from a list.

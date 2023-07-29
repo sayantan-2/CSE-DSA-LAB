@@ -1,0 +1,1 @@
+WAP to find second highest from an array. (Do not use sorting)

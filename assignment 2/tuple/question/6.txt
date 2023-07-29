@@ -1,0 +1,1 @@
+Copy specific elements from one tuple to a new tuple.

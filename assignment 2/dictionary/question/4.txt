@@ -1,0 +1,1 @@
+Create a dictionary by extracting the keys from a given dictionary.

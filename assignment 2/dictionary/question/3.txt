@@ -1,0 +1,1 @@
+Initialize dictionary with default value.

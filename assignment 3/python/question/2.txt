@@ -1,0 +1,4 @@
+Write a program to store following numbers ( 1 to 9) in a matrix in spiral manner. 
+1 2 3
+8 9 4
+7 6 5

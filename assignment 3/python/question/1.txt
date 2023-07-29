@@ -1,0 +1,1 @@
+Write a program to print the sum of the diagonal element of the M*N square matrix. 
