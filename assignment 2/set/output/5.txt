@@ -1,3 +1,1 @@
-Enter the location: 3
-Enter the number: 99
-[1, 2, 3, 99, 4, 5, 6, 7, 8, 9, 10]
+Set1 after removing items: {1, 4}

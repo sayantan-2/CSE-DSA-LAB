@@ -1,2 +1,1 @@
-Enter limit-5
-40
+{'a': None, 'b': None, 'c': None}

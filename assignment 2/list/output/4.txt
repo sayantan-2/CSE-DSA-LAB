@@ -1,2 +1,1 @@
-Enter limit-5
-40
+['my India', 'my mexico', 'my canada', 'name India', 'name mexico', 'name canada', 'is India', 'is mexico', 'is canada']

@@ -1,3 +1,6 @@
-Enter the location: 3
-Enter the number: 99
-[1, 2, 3, 99, 4, 5, 6, 7, 8, 9, 10]
+Before swapping:
+tpl 1: (1, 2, 3)
+tpl 2: (4, 5, 6)
+After swapping:
+tpl 1: (4, 5, 6)
+tpl 2: (1, 2, 3)
