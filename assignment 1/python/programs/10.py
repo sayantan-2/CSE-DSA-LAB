@@ -1,4 +1,12 @@
-m = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-n = [10, 11, 12, 13, 14, 15]
+m = []
+size = int(input("Enter the size of the 1st array: "))
+for i in range(size):
+    element = int(input(f"Enter element {i+1}: "))
+    m.append(element)
+n = []
+size = int(input("Enter the size of the 2nd array: "))
+for i in range(size):
+    element = int(input(f"Enter element {i+1}: "))
+    n.append(element)
 m.extend(n)
 print(m)

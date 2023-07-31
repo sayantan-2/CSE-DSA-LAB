@@ -1,2 +1,9 @@
-Enter the index of the element to be deleted: 4
-1, 2, 3, 4, 6, 7, 8, 9, 10
+Enter 5 elements of the array:
+1
+2
+3
+4
+5
+Enter the element to be deleted: 4
+Element 4 deleted from the array.
+Updated array: 1 2 3 5 

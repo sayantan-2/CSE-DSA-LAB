@@ -1,4 +1,3 @@
-//to find second highest element from an array
 #include <stdio.h>
 
 int findSecondHighest(int array[], int size) {
@@ -32,8 +31,16 @@ int findSecondHighest(int array[], int size) {
 }
 
 int main() {
-    int array[] = {10, 5, 8, 20, 15, 7};
-    int size = sizeof(array) / sizeof(array[0]);
+    int array[100];
+    int size;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    printf("Enter the elements of the array: ");
+    for (int i = 0; i < size; i++) {
+        scanf("%d", &array[i]);
+    }
 
     printf("Array: ");
     for (int i = 0; i < size; i++) {

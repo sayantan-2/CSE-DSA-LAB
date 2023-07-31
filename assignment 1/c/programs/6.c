@@ -1,4 +1,3 @@
-//program to delete ana element from an array
 #include <stdio.h>
 
 void printarray(int array[], int length)
@@ -9,22 +8,41 @@ void printarray(int array[], int length)
     }
     printf("\n");
 }
+
 int main()
 {
-    int arr[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    int arr[5];
     int e;
-    printf("enter the element to be deleted:");
+    printf("Enter 5 elements of the array:\n");
+    for (int i = 0; i < 5; i++)
+    {
+        scanf("%d", &arr[i]);
+    }
+    printf("Enter the element to be deleted: ");
     scanf("%d", &e);
-    for (int i = 0; i < 9; i++)
+    int length = 5;
+    int found = 0;
+    for (int i = 0; i < length; i++)
     {
         if (arr[i] == e)
         {
-            for (int j = i; j < 8; j++)
+            found = 1;
+            for (int j = i; j < length - 1; j++)
             {
                 arr[j] = arr[j + 1];
             }
+            length--;
         }
     }
-    printarray(arr,8);
+    if (found)
+    {
+        printf("Element %d deleted from the array.\n", e);
+        printf("Updated array: ");
+        printarray(arr, length);
+    }
+    else
+    {
+        printf("Element %d not found in the array.\n", e);
+    }
     return 0;
 }

@@ -1,1 +1,13 @@
-[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+Enter the size of the 1st array: 5
+Enter element 1: 1
+Enter element 2: 2
+Enter element 3: 3
+Enter element 4: 4
+Enter element 5: 5
+Enter the size of the 2nd array: 5
+Enter element 1: 6
+Enter element 2: 7
+Enter element 3: 8
+Enter element 4: 9
+Enter element 5: 10
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]

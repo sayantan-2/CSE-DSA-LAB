@@ -1,5 +1,3 @@
-// Write a program to merge two sorted array of length M & N
-
 #include <stdio.h>
 
 void mergeArrays(int array1[], int M, int array2[], int N, int mergedArray[]) {
@@ -25,11 +23,27 @@ void mergeArrays(int array1[], int M, int array2[], int N, int mergedArray[]) {
 }
 
 int main() {
-    int array1[] = {1, 3, 5, 7, 9};
-    int M = sizeof(array1) / sizeof(array1[0]);
+    int array1[100];
+    int M;
 
-    int array2[] = {2, 4, 6, 8, 10, 12};
-    int N = sizeof(array2) / sizeof(array2[0]);
+    printf("Enter the size of Array 1: ");
+    scanf("%d", &M);
+
+    printf("Enter the elements of Array 1: ");
+    for (int i = 0; i < M; i++) {
+        scanf("%d", &array1[i]);
+    }
+
+    int array2[100];
+    int N;
+
+    printf("Enter the size of Array 2: ");
+    scanf("%d", &N);
+
+    printf("Enter the elements of Array 2: ");
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &array2[i]);
+    }
 
     int mergedArray[M + N];
 

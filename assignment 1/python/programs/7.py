@@ -1,10 +1,13 @@
-#a python program to delete duplicate elements from array
+# a python program to delete duplicate elements from array
+arr = []
+size = int(input("Enter the size of the array: "))
+for i in range(size):
+    element = int(input(f"Enter element {i+1}: "))
+    arr.append(element)
+arr2 = []
 
-arr=[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10]
-arr2=[]
-
-for i in range(len(arr)):
-        if arr[i] not in arr[i+1:len(arr)]:
-            arr2.append(arr[i])
+for i in range(size):
+    if arr[i] not in arr[i + 1 : size]:
+        arr2.append(arr[i])
 
 print(arr2)

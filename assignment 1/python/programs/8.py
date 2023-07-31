@@ -12,6 +12,10 @@ def find_second_highest(arr):
             second_highest = arr[i]
     return second_highest
  
-arr=[5, 2, 9, 1, 8, 3, 7, 6, 10, 4, 2, 6, 3, 1, 9, 7, 8, 4, 10, 2s5]
+arr = []
+size = int(input("Enter the size of the array: "))
+for i in range(size):
+    element = int(input(f"Enter element {i+1}: "))
+    arr.append(element)
 second_highest = find_second_highest(arr)
 print(second_highest)

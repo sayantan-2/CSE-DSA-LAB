@@ -1,5 +1,12 @@
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+arr = []
+size = int(input("Enter the size of the array: "))
+
+for i in range(size):
+    element = int(input(f"Enter element {i+1}: "))
+    arr.append(element)
+
 k = int(input("Enter the location: "))
 n = int(input("Enter the number: "))
-arr.insert(k,n)
+
+arr.insert(k, n)
 print(arr)

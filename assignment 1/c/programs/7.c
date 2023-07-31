@@ -1,12 +1,16 @@
-//wap to remove duplicate elements from an array
 #include <stdio.h>
 
-void deleteDuplicates(int array[], int *size) {
-    for (int i = 0; i < *size; i++) {
-        for (int j = i + 1; j < *size; j++) {
-            if (array[i] == array[j]) {
+void deleteDuplicates(int array[], int *size)
+{
+    for (int i = 0; i < *size; i++)
+    {
+        for (int j = i + 1; j < *size; j++)
+        {
+            if (array[i] == array[j])
+            {
                 // Shift elements to the left to remove the duplicate
-                for (int k = j; k < (*size) - 1; k++) {
+                for (int k = j; k < (*size) - 1; k++)
+                {
                     array[k] = array[k + 1];
                 }
                 (*size)--;
@@ -16,23 +20,36 @@ void deleteDuplicates(int array[], int *size) {
     }
 }
 
-int main() {
-    int array[] = {2, 4, 6, 4, 8, 2, 10, 6};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    printf("Original array: ");
-    for (int i = 0; i < size; i++) {
+void printArray(int array[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
         printf("%d ", array[i]);
     }
     printf("\n");
+}
+
+int main()
+{
+    int array[100];
+    int size;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &size);
+
+    printf("Enter the elements of the array: ");
+    for (int i = 0; i < size; i++)
+    {
+        scanf("%d", &array[i]);
+    }
+
+    printf("Original array: ");
+    printArray(array, size);
 
     deleteDuplicates(array, &size);
 
     printf("Array with duplicates removed: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
+    printArray(array, size);
 
     return 0;
 }

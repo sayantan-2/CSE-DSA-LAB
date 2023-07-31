@@ -1,2 +1,8 @@
-Enter the index of the element to be deleted: 4
-[1, 2, 3, 4, 6, 7, 8, 9, 10]
+Enter the size of the array: 5 
+Enter element 1: 1
+Enter element 2: 2
+Enter element 3: 3
+Enter element 4: 4
+Enter element 5: 5
+Enter the index of the element to be deleted: 3
+[1, 2, 3, 5]

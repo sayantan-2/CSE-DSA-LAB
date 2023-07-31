@@ -1,2 +1,13 @@
-enter the number: 5
-2
+Enter the size of the array: 10
+Enter element 1: 1
+Enter element 2: 2
+Enter element 3: 1
+Enter element 4: 3
+Enter element 5: 1
+Enter element 6: 4
+Enter element 7: 1
+Enter element 8: 5
+Enter element 9: 1
+Enter element 10: 6
+enter the number:1
+5

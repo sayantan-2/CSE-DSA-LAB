@@ -1,2 +1,11 @@
+Enter the size of the array: 8
+Enter the elements of the array: 2
+4
+6
+4
+8
+2
+10
+6
 Original array: 2 4 6 4 8 2 10 6 
 Array with duplicates removed: 2 4 6 8 10 

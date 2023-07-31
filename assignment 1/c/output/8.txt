@@ -1,2 +1,8 @@
-Array: 10 5 8 20 15 7 
-The second highest element is: 15
+Enter the size of the array: 5
+Enter the elements of the array: 10
+5
+8
+20
+14
+Array: 10 5 8 20 14 
+The second highest element is: 14

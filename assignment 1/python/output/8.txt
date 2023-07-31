@@ -1,1 +1,12 @@
-10
+Enter the size of the array: 10
+Enter element 1: 1
+Enter element 2: 4
+Enter element 3: 5
+Enter element 4: 8
+Enter element 5: 74
+Enter element 6: 10
+Enter element 7: 58
+Enter element 8: 99
+Enter element 9: 100
+Enter element 10: 456
+100
