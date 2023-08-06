@@ -1,38 +1,33 @@
-//wap to remove duplicate elements from an array
 #include <stdio.h>
 
-void deleteDuplicates(int array[], int *size) {
-    for (int i = 0; i < *size; i++) {
-        for (int j = i + 1; j < *size; j++) {
-            if (array[i] == array[j]) {
-                // Shift elements to the left to remove the duplicate
-                for (int k = j; k < (*size) - 1; k++) {
-                    array[k] = array[k + 1];
-                }
-                (*size)--;
-                j--; // Re-check the current index, as it has a new element after the shift
-            }
-        }
+void reverseString(char *str)
+{
+    int length = 0;
+    while (str[length] != '\0')
+        length++;
+
+    int start = 0;
+    int end = length - 1;
+    while (start < end)
+    {
+        char temp = str[start];
+        str[start] = str[end];
+        str[end] = temp;
+
+        start++;
+        end--;
     }
 }
 
-int main() {
-    int array[] = {2, 4, 6, 4, 8, 2, 10, 6};
-    int size = sizeof(array) / sizeof(array[0]);
+int main()
+{
+    char w[100];
+    printf("enter a word:");
+    scanf("%s",w);
+    printf("original: %s\n", w);
+    reverseString(w);
 
-    printf("Original array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
-
-    deleteDuplicates(array, &size);
-
-    printf("Array with duplicates removed: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
+    printf("reverse: %s\n", w);
 
     return 0;
 }

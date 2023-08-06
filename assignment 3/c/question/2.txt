@@ -1,4 +1,1 @@
-   A 
-  B B 
- C C C 
-D D D D 
+Write a program to store following numbers ( 1 to 9) in a matrix in spiral manner. 

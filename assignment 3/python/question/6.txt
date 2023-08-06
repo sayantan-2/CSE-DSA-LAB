@@ -1,1 +1,1 @@
-WAP to delete an element from array.
+Write a program to interchange different rows of a matrix. 

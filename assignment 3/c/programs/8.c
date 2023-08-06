@@ -1,51 +1,25 @@
-//to find second highest element from an array
 #include <stdio.h>
 
-int findSecondHighest(int array[], int size) {
-    if (size < 2) {
-        printf("The array should have at least two elements.\n");
-        return -1;
+int is_palindrome(char *s)
+{
+    int len = 0;
+    while (s[len] != '\0')
+    {
+        len++;
     }
-
-    int highest = array[0];
-    int secondHighest = array[1];
-
-    if (secondHighest > highest) {
-        // Swap highest and secondHighest if needed
-        int temp = highest;
-        highest = secondHighest;
-        secondHighest = temp;
-    }
-
-    for (int i = 2; i < size; i++) {
-        if (array[i] > highest) {
-            // Update highest and shift the previous highest to second highest
-            secondHighest = highest;
-            highest = array[i];
-        } else if (array[i] > secondHighest && array[i] != highest) {
-            // Update secondHighest if a new second highest element is found
-            secondHighest = array[i];
+    for (int i = 0; i < len / 2; i++)
+    {
+        if (s[i] != s[len - i - 1])
+        {
+            return 0;
         }
     }
-
-    return secondHighest;
+    return 1;
 }
 
-int main() {
-    int array[] = {10, 5, 8, 20, 15, 7};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    printf("Array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
-
-    int secondHighest = findSecondHighest(array, size);
-
-    if (secondHighest != -1) {
-        printf("The second highest element is: %d\n", secondHighest);
-    }
-
+int main()
+{
+    char s[] = "racecar";
+    printf("%s is %s palindrome\n", is_palindrome(s) ? "Yes" : "No",s);
     return 0;
 }

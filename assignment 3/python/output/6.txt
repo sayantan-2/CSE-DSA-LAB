@@ -1,2 +1,11 @@
-Enter the index of the element to be deleted: 4
-[1, 2, 3, 4, 6, 7, 8, 9, 10]
+original matrix:
+1       2       3
+4       5       6
+7       8       9
+enter the rows you want to interchange
+1
+2
+after:
+4       5       6
+1       2       3
+7       8       9

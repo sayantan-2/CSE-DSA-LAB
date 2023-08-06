@@ -1,5 +1,16 @@
-*
-#*
-*#*
-#*#*
-*#*#*
+Enter the number of rows: 3
+Enter the number of columns: 3
+Enter element [0][0]: 1
+Enter element [0][1]: 2
+Enter element [0][2]: 3
+Enter element [1][0]: 4
+Enter element [1][1]: 5
+Enter element [1][2]: 6
+Enter element [2][0]: 7
+Enter element [2][1]: 8
+Enter element [2][2]: 9
+1 2 3
+4 5 6
+7 8 9
+sum of principal diagonal: 15
+sum of anti diagonal: 15

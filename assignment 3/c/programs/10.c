@@ -1,55 +1,57 @@
-// Write a program to merge two sorted array of length M & N
-
 #include <stdio.h>
+#include <string.h>
 
-void mergeArrays(int array1[], int M, int array2[], int N, int mergedArray[]) {
-    int i = 0, j = 0, k = 0;
-
-    while (i < M && j < N) {
-        if (array1[i] <= array2[j]) {
-            mergedArray[k++] = array1[i++];
-        } else {
-            mergedArray[k++] = array2[j++];
+void sort(char **words, int size)
+{
+    char *temp;
+    for (int i = 0; i < size - 1; i++)
+    {
+        for (int j = i + 1; j < size; j++)
+        {
+            if (strcmp(words[i], words[j]) > 0)
+            {
+                temp = words[i];
+                words[i] = words[j];
+                words[j] = temp;
+            }
         }
-    }
-
-    // Copy the remaining elements from array1, if any
-    while (i < M) {
-        mergedArray[k++] = array1[i++];
-    }
-
-    // Copy the remaining elements from array2, if any
-    while (j < N) {
-        mergedArray[k++] = array2[j++];
     }
 }
 
-int main() {
-    int array1[] = {1, 3, 5, 7, 9};
-    int M = sizeof(array1) / sizeof(array1[0]);
+int main()
+{
+    char *words[] = {"cat", "dog", "bird", "fish"};
+    int size = sizeof(words) / sizeof(words[0]);
+    char target[100];
 
-    int array2[] = {2, 4, 6, 8, 10, 12};
-    int N = sizeof(array2) / sizeof(array2[0]);
+    printf("Enter a word: ");
+    scanf("%s", target);
 
-    int mergedArray[M + N];
-
-    printf("Array 1: ");
-    for (int i = 0; i < M; i++) {
-        printf("%d ", array1[i]);
+    int found = 0;
+    for (int i = 0; i < size; i++)
+    {
+        if (strcmp(target, words[i]) == 0)
+        {
+            found = 1;
+            break;
+        }
     }
-    printf("\n");
 
-    printf("Array 2: ");
-    for (int i = 0; i < N; i++) {
-        printf("%d ", array2[i]);
+    if (found)
+    {
+        printf("The word is in the list\n");
     }
-    printf("\n");
+    else
+    {
+        printf("Word not in list\n");
+    }
 
-    mergeArrays(array1, M, array2, N, mergedArray);
+    sort(words, size);
 
-    printf("Merged and sorted array: ");
-    for (int i = 0; i < M + N; i++) {
-        printf("%d ", mergedArray[i]);
+    printf("Sorted list of words: ");
+    for (int i = 0; i < size; i++)
+    {
+        printf("%s ", words[i]);
     }
     printf("\n");
 

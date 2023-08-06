@@ -1,30 +1,39 @@
-//program to delete ana element from an array
 #include <stdio.h>
 
-void printarray(int array[], int length)
+void printMatrix(int matrix[][3], int row, int col)
 {
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < row; i++)
     {
-        printf("%d ", array[i]);
+        for (int j = 0; j < col; j++)
+        {
+            printf("%d\t", matrix[i][j]);
+        }
+        printf("\n");
     }
-    printf("\n");
 }
+
 int main()
 {
-    int arr[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int e;
-    printf("enter the element to be deleted:");
-    scanf("%d", &e);
-    for (int i = 0; i < 9; i++)
+    int matrix[3][3] = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+
+    printf("original matrix:\n");
+    printMatrix(matrix, 3, 3);
+
+    printf("enter the rows you want to interchange:\n");
+    int r1, r2;
+    scanf("%d", &r1);
+    scanf("%d", &r2);
+
+    int temp[3];
+    for (int i = 0; i < 3; i++)
     {
-        if (arr[i] == e)
-        {
-            for (int j = i; j < 8; j++)
-            {
-                arr[j] = arr[j + 1];
-            }
-        }
+        temp[i] = matrix[r1 - 1][i];
+        matrix[r1 - 1][i] = matrix[r2 - 1][i];
+        matrix[r2 - 1][i] = temp[i];
     }
-    printarray(arr,8);
+
+    printf("after:\n");
+    printMatrix(matrix, 3, 3);
+
     return 0;
 }

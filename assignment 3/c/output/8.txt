@@ -1,2 +1,1 @@
-Array: 10 5 8 20 15 7 
-The second highest element is: 15
+Yes is racecar palindrome

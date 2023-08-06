@@ -1,1 +1,1 @@
-WAP to find second highest from an array. (Do not use sorting)
+Write a program to check whether a string is palindrome or not.

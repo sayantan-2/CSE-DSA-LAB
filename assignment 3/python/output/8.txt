@@ -1,1 +1,2 @@
-10
+enter a word:racecar
+it's pallindrome

@@ -1,1 +1,1 @@
-WAP to remove duplicate elements from array
+Write a program to reverse a string. 

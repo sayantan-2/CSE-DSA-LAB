@@ -1,1 +1,1 @@
-WAP to find frequency of a given number ‘k’
+Write a program to print abbreviation of a given word. (1st letter of each word) 
