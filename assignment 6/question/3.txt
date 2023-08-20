@@ -1,0 +1,1 @@
+Write a program to check whether number of opening ‘(‘ & closing ‘)’ parenthesis are equal or not.

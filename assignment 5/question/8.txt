@@ -1,0 +1,1 @@
+Write a program to divide doubly linked list from middle and rejoin them in reverse manner.

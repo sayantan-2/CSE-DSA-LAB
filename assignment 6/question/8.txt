@@ -1,0 +1,1 @@
+Write a program to convert a decimal number into binary number using stack.

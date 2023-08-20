@@ -1,0 +1,1 @@
+Write a program to implement multiple queues in a single array.

@@ -1,1 +1,0 @@
-calculate the summation up-to ‘N’ number. 1+1+4+9+25+64+ .......... +N

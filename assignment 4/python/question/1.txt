@@ -1,1 +1,0 @@
-Write a program to calculate difference between Start time & End time of an event. Time is expressed as hr-min-sec. Final result to be produced in seconds.

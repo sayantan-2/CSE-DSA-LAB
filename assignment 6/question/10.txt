@@ -1,0 +1,1 @@
+Write a program to implement multiple stacks in a single array.

@@ -1,0 +1,9 @@
+Enter the number of elements in the list: 5
+Enter the elements:
+10
+20
+30
+40
+50
+
+The linked list contains a loop.

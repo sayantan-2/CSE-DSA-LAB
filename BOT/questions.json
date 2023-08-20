@@ -1,0 +1,42 @@
+[
+  {
+    "question_number": 1,
+    "question_text": "Write a program to create a binary tree."
+  },
+  {
+    "question_number": 2,
+    "question_text": "Write a program to implement tree traversal."
+  },
+  {
+    "question_number": 3,
+    "question_text": "Write a program to check whether a tree is full or complete."
+  },
+  {
+    "question_number": 4,
+    "question_text": "Write a program to create a binary search tree."
+  },
+  {
+    "question_number": 5,
+    "question_text": "Write a program to sort a given set of numbers using BST."
+  },
+  {
+    "question_number": 6,
+    "question_text": "Write a program to find mirror image of a BST."
+  },
+  {
+    "question_number": 7,
+    "question_text": "Write a program to implement a two way threaded binary tree."
+  },
+  {
+    "question_number": 8,
+    "question_text": "Write a program to print adjacency list of a given graph."
+  },
+  {
+    "question_number": 9,
+    "question_text": "Write a program to implement BFS algorithm."
+  },
+  {
+    "question_number": 10,
+    "question_text": "Write a program to implement DFS algorithm."
+  }
+]

@@ -1,0 +1,1 @@
+Group elements of an array based on their first occurrence

@@ -1,1 +1,0 @@
-Write a program to collect height & weight of ‘N’ students. Find the highest weight/ height ratio.

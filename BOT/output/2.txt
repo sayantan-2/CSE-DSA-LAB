@@ -1,0 +1,9 @@
+Enter the number of students: 3
+Enter the height of student 1: 1.7
+Enter the weight of student 1: 70
+Enter the height of student 2: 1.8
+Enter the weight of student 2: 80
+Enter the height of student 3: 1.5
+Enter the weight of student 3: 60
+
+The highest weight/height ratio is: 0.857143

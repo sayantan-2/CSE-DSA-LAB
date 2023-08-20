@@ -1,0 +1,13 @@
+Enter the number of elements in the first sorted list: 3
+Enter the elements in ascending order:
+10
+20
+30
+Enter the number of elements in the second sorted list: 2
+Enter the elements in ascending order:
+15
+25
+
+List 1: 10 20 30
+List 2: 15 25
+Merged Sorted List: 10 15 20 25 30
