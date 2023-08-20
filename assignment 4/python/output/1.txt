@@ -1,5 +1,4 @@
-*
-#*
-*#*
-#*#*
-*#*#*
+Enter the start time in the format hr-min-sec: 2-30-0
+Enter the end time in the format hr-min-sec: 3-20-0
+
+3600

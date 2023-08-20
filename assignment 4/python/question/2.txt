@@ -1,4 +1,1 @@
-   A 
-  B B 
- C C C 
-D D D D 
+Write a program to collect height & weight of ‘N’ students. Find the highest weight/ height ratio.

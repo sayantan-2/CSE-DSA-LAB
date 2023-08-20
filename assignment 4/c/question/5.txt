@@ -1,1 +1,1 @@
-WAP to insert a new element in array at given location k.
+Write a program to merge two already sorted list.

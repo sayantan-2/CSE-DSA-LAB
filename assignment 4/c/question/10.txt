@@ -1,1 +1,1 @@
-WAP to merge two sorted array of length M & N. [M & N may not be equal]
+Write a program to perform addition of two polynomials using linked list.

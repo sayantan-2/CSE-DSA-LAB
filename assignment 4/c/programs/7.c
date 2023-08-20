@@ -1,38 +1,92 @@
-//wap to remove duplicate elements from an array
 #include <stdio.h>
+#include <malloc.h>
 
-void deleteDuplicates(int array[], int *size) {
-    for (int i = 0; i < *size; i++) {
-        for (int j = i + 1; j < *size; j++) {
-            if (array[i] == array[j]) {
-                // Shift elements to the left to remove the duplicate
-                for (int k = j; k < (*size) - 1; k++) {
-                    array[k] = array[k + 1];
-                }
-                (*size)--;
-                j--; // Re-check the current index, as it has a new element after the shift
-            }
-        }
-    }
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct Node *createNode(int data)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
 }
 
-int main() {
-    int array[] = {2, 4, 6, 4, 8, 2, 10, 6};
-    int size = sizeof(array) / sizeof(array[0]);
+struct Node *insert(struct Node *head, int data)
+{
+    struct Node *newNode = createNode(data);
 
-    printf("Original array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+    if (head == NULL)
+    {
+        head = newNode;
+    }
+    else
+    {
+        struct Node *temp = head;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+
+    return head;
+}
+
+void printList(struct Node *head)
+{
+    while (head != NULL)
+    {
+        printf("%d ", head->data);
+        head = head->next;
     }
     printf("\n");
+}
 
-    deleteDuplicates(array, &size);
+struct Node *reverseList(struct Node *head)
+{
+    struct Node *prev = NULL;
+    struct Node *current = head;
+    struct Node *next = NULL;
 
-    printf("Array with duplicates removed: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+    while (current != NULL)
+    {
+        next = current->next; // Store the next node
+        current->next = prev; // Reverse the link
+
+        // Move the pointers forward
+        prev = current;
+        current = next;
     }
-    printf("\n");
+
+    return prev; // New head after reversal
+}
+
+int main()
+{
+    struct Node *head = NULL;
+    int num, data;
+
+    printf("Enter the number of elements in the list: ");
+    scanf("%d", &num);
+
+    printf("Enter the elements:\n");
+    for (int i = 0; i < num; i++)
+    {
+        scanf("%d", &data);
+        head = insert(head, data);
+    }
+
+    printf("Original List: ");
+    printList(head);
+
+    head = reverseList(head);
+
+    printf("Reversed List: ");
+    printList(head);
 
     return 0;
 }

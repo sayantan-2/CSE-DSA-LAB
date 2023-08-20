@@ -1,34 +1,104 @@
-//program to find frequency of a given number k
 #include <stdio.h>
+#include <malloc.h>
 
-int findFrequency(int array[], int size, int k) {
-    int frequency = 0;
+struct Node
+{
+    int data;
+    struct Node *next;
+};
 
-    for (int i = 0; i < size; i++) {
-        if (array[i] == k) {
-            frequency++;
+struct Node *createNode(int data)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
+}
+
+struct Node *insert(struct Node *head, int data)
+{
+    struct Node *newNode = createNode(data);
+
+    if (head == NULL)
+    {
+        head = newNode;
+    }
+    else
+    {
+        struct Node *temp = head;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+
+    return head;
+}
+
+void printList(struct Node *head)
+{
+    while (head != NULL)
+    {
+        printf("%d ", head->data);
+        head = head->next;
+    }
+    printf("\n");
+}
+
+int hasLoop(struct Node *head)
+{
+    struct Node *slow = head;
+    struct Node *fast = head;
+
+    while (fast != NULL && fast->next != NULL)
+    {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if (slow == fast)
+        {
+            return 1; // Loop detected
         }
     }
 
-    return frequency;
+    return 0; // No loop
 }
 
-int main() {
-    int array[] = {2, 5, 7, 5, 9, 2, 1, 5};
-    int size = sizeof(array) / sizeof(array[0]);
-    int k;
+int main()
+{
+    struct Node *head = NULL;
+    int num, data;
 
-    printf("Array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+    printf("Enter the number of elements in the list: ");
+    scanf("%d", &num);
+
+    printf("Enter the elements:\n");
+    for (int i = 0; i < num; i++)
+    {
+        scanf("%d", &data);
+        head = insert(head, data);
     }
-    printf("\n");
 
-    printf("Enter the number to find its frequency: ");
-    scanf("%d", &k);
+    // Creating a loop for demonstration purposes
+    if (num >= 3)
+    {
+        struct Node *temp = head;
+        for (int i = 0; i < num - 1; i++)
+        {
+            temp = temp->next;
+        }
+        temp->next = head;
+    }
 
-    int frequency = findFrequency(array, size, k);
-    printf("Frequency of %d in the array: %d\n", k, frequency);
+    if (hasLoop(head))
+    {
+        printf("The linked list contains a loop.\n");
+    }
+    else
+    {
+        printf("The linked list does not contain a loop.\n");
+    }
 
     return 0;
 }

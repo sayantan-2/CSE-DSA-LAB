@@ -1,2 +1,9 @@
-Enter limit-5
-40
+Enter the number of items: 3
+Enter the data item: 10
+Enter the data item: 20
+Enter the data item: 30
+Enter the location where you want to insert an item: 2
+Enter the item you want to insert: 15
+Enter 1 to delete item at end, 0 to keep: 1
+
+START--> 10--> 15--> 20

@@ -1,10 +1,60 @@
-#a python program to delete duplicate elements from array
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
 
-arr=[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10]
-arr2=[]
 
-for i in range(len(arr)):
-        if arr[i] not in arr[i+1:len(arr)]:
-            arr2.append(arr[i])
+def create_node(data):
+    return Node(data)
 
-print(arr2)
+
+def insert(head, data):
+    new_node = create_node(data)
+
+    if head is None:
+        head = new_node
+    else:
+        temp = head
+        while temp.next is not None:
+            temp = temp.next
+        temp.next = new_node
+
+    return head
+
+
+def print_list(head):
+    while head is not None:
+        print(head.data, end=" ")
+        head = head.next
+    print()
+
+
+def reverse_list(head):
+    prev = None
+    current = head
+
+    while current is not None:
+        next_node = current.next
+        current.next = prev
+        prev = current
+        current = next_node
+
+    return prev
+
+
+if __name__ == "__main__":
+    head = None
+
+    num = int(input("Enter the number of elements in the list: "))
+    print("Enter the elements:")
+    for _ in range(num):
+        data = int(input())
+        head = insert(head, data)
+
+    print("Original List:", end=" ")
+    print_list(head)
+
+    head = reverse_list(head)
+
+    print("Reversed List:", end=" ")
+    print_list(head)

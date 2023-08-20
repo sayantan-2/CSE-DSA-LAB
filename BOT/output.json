@@ -1,0 +1,143 @@
+{
+  "program_1": {
+    "input": [
+      "Enter the start time in the format hr:min:sec: 2:30:0",
+      "Enter the end time in the format hr:min:sec: 3:20:0"
+    ],
+    "output": "3600"
+  },
+
+  "program_2": {
+    "input": [
+      "Enter the number of students: 3",
+      "Enter the height of student 1: 1.7",
+      "Enter the weight of student 1: 70",
+      "Enter the height of student 2: 1.8",
+      "Enter the weight of student 2: 80",
+      "Enter the height of student 3: 1.5",
+      "Enter the weight of student 3: 60"
+    ],
+    "output": "The highest weight/height ratio is: 0.857143"
+  },
+
+  "program_3": {
+    "input": [
+      "Enter the number of elements to insert: 5",
+      "Enter element 1: 10",
+      "Enter element 2: 20",
+      "Enter element 3: 30",
+      "Enter element 4: 40",
+      "Enter element 5: 50"
+    ],
+    "output": "10 20 30 40 50"
+  },
+
+  "program_4": {
+    "input": [
+      "Enter the number of items: 3",
+      "Enter the data item: 10",
+      "Enter the data item: 20",
+      "Enter the data item: 30",
+      "Enter the location where you want to insert an item: 2",
+      "Enter the item you want to insert: 15",
+      "Do you want to delete an item at the end of the list? Enter 1 for yes and 0 for no: 1"
+    ],
+    "output": "START-->10-->15-->20"
+  },
+
+  "program_5": {
+    "input": [
+      "Enter the number of elements in the first sorted list: 3",
+      "Enter the elements in ascending order:",
+      "10",
+      "20",
+      "30",
+      "Enter the number of elements in the second sorted list: 2",
+      "Enter the elements in ascending order:",
+      "15",
+      "25"
+    ],
+    "output": [
+      "List 1: 10 20 30",
+      "List 2: 15 25",
+      "Merged Sorted List: 10 15 20 25 30"
+    ]
+  },
+  "program_6": {
+    "input": [
+      "Enter the number of elements in the linked list: 5",
+      "Enter the elements:",
+      "10",
+      "20",
+      "30",
+      "40",
+      "50",
+      "Enter the value of k: 3"
+    ],
+    "output": [
+      "Original Linked List: 10 20 30 40 50",
+      "Left-Shifted Linked List: 40 50 10 20 30"
+    ]
+  },
+
+  "program_7": {
+    "input": [
+      "Enter the number of elements in the list: 5",
+      "Enter the elements:",
+      "10",
+      "20",
+      "30",
+      "40",
+      "50"
+    ],
+    "output": ["Original List: 10 20 30 40 50", "Reversed List: 50 40 30 20 10"]
+  },
+
+  "program_8": {
+    "input": [
+      "Enter the number of elements in the list: 5",
+      "Enter the elements:",
+      "10",
+      "20",
+      "30",
+      "40",
+      "50"
+    ],
+    "output": [
+      "Original List: 10 20 30 40 50",
+      "List after Pairwise Swapping: 20 10 40 30 50"
+    ]
+  },
+
+  "program_9": {
+    "input": [
+      "Enter the number of elements in the list: 5",
+      "Enter the elements:",
+      "10",
+      "20",
+      "30",
+      "40",
+      "50"
+    ],
+    "output": "The linked list contains a loop."
+  },
+
+  "program_10": {
+    "input": [
+      "Enter the number of terms in Polynomial 1: 3",
+      "Enter the terms for Polynomial 1 (coefficient exponent):",
+      "2 3",
+      "4 2",
+      "-3 1",
+      "Enter the number of terms in Polynomial 2: 2",
+      "Enter the terms for Polynomial 2 (coefficient exponent):",
+      "3 4",
+      "5 1"
+    ],
+    "output": [
+      "Polynomial 1: 2x^3 + 4x^2 -3x^1",
+      "Polynomial 2: 3x^4 + 5x^1",
+      "Sum of Polynomials: 3x^4 + 2x^3 + 4x^2 + 2x^1"
+    ]
+  }
+}

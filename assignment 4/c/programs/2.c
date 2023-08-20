@@ -1,18 +1,32 @@
 #include <stdio.h>
+
+// Define a structure to store student data
+struct student
+{
+    float height;
+    float weight;
+};
+
 int main()
 {
-    int i, j, k;
-    for (i = 0; i < 4; i++)
+    int N;
+    printf("Enter the number of students: ");
+    scanf("%d", &N);
+    // Declare an array of structures to store N students
+    struct student students[N];
+    float ratio, max_ratio = 0;
+    for (int i = 0; i < N; i++)
     {
-        for (j = i; j < 3; j++)
+        printf("Enter the height of student %d: ", i + 1);
+        scanf("%f", &students[i].height);
+        printf("Enter the weight of student %d: ", i + 1);
+        scanf("%f", &students[i].weight);
+        ratio = students[i].weight / students[i].height;
+        if (ratio > max_ratio)
         {
-            printf(" ");
+            max_ratio = ratio;
         }
-        for (k = 0; k < i + 1; k++)
-        {
-            printf("%c ", 65 + i);
-        }
-        printf("\n");
     }
+    printf("The highest weight/height ratio is: %f\n", max_ratio);
     return 0;
 }

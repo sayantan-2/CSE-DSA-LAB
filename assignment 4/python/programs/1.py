@@ -1,9 +1,11 @@
-a=1
-for i in range(0,5):
-    for j in range(0,i+1):
-        if a%2!=0:
-            print("*",end='')
-        else:
-            print("#",end='')
-        a=a+1
-    print()
+def time_diff():
+    start_time = input("Enter the start time in the format hr-min-sec: ")
+    end_time = input("Enter the end time in the format hr-min-sec: ")
+    start_hr, start_min, start_sec = map(int, start_time.split("-"))
+    end_hr, end_min, end_sec = map(int, end_time.split("-"))
+    start_time_in_sec = start_hr * 3600 + start_min * 60 + start_sec
+    end_time_in_sec = end_hr * 3600 + end_min * 60 + end_sec
+    return end_time_in_sec - start_time_in_sec
+
+
+print(time_diff())

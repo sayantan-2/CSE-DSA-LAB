@@ -1,8 +1,45 @@
-a=1
-for i in range(0,4):
-    for j in range(i,3):
-        print(' ',end='')
-    for k in range(0,i+1):
-        print(a,end=' ')
-        a=a+1
-    print('')
+# Define a class to represent a node in the linked list
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+
+# Function to create a new node with the given data and insert it at the end of the list
+def insert_at_end(head, data):
+    new_node = Node(data)
+    if head is None:
+        head = new_node
+        return head
+    current = head
+    while current.next is not None:
+        current = current.next
+    current.next = new_node
+    return head
+
+
+# Function to print the elements of the linked list
+def print_list(head):
+    current = head
+    while current is not None:
+        print(current.data, end=" ")
+        current = current.next
+    print()
+
+
+def main():
+    # Create an empty linked list
+    head = None
+
+    # Insert elements into the list
+    N = int(input("Enter the number of elements to insert: "))
+    for i in range(N):
+        data = int(input(f"Enter element {i + 1}: "))
+        head = insert_at_end(head, data)
+
+    # Print the elements of the list
+    print_list(head)
+
+
+if __name__ == "__main__":
+    main()

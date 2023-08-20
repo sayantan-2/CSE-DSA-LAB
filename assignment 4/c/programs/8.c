@@ -1,51 +1,103 @@
-//to find second highest element from an array
 #include <stdio.h>
+#include <malloc.h>
 
-int findSecondHighest(int array[], int size) {
-    if (size < 2) {
-        printf("The array should have at least two elements.\n");
-        return -1;
-    }
+struct Node
+{
+    int data;
+    struct Node *next;
+};
 
-    int highest = array[0];
-    int secondHighest = array[1];
-
-    if (secondHighest > highest) {
-        // Swap highest and secondHighest if needed
-        int temp = highest;
-        highest = secondHighest;
-        secondHighest = temp;
-    }
-
-    for (int i = 2; i < size; i++) {
-        if (array[i] > highest) {
-            // Update highest and shift the previous highest to second highest
-            secondHighest = highest;
-            highest = array[i];
-        } else if (array[i] > secondHighest && array[i] != highest) {
-            // Update secondHighest if a new second highest element is found
-            secondHighest = array[i];
-        }
-    }
-
-    return secondHighest;
+struct Node *createNode(int data)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = NULL;
+    return newNode;
 }
 
-int main() {
-    int array[] = {10, 5, 8, 20, 15, 7};
-    int size = sizeof(array) / sizeof(array[0]);
+struct Node *insert(struct Node *head, int data)
+{
+    struct Node *newNode = createNode(data);
 
-    printf("Array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+    if (head == NULL)
+    {
+        head = newNode;
+    }
+    else
+    {
+        struct Node *temp = head;
+        while (temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = newNode;
+    }
+
+    return head;
+}
+
+void printList(struct Node *head)
+{
+    while (head != NULL)
+    {
+        printf("%d ", head->data);
+        head = head->next;
     }
     printf("\n");
+}
 
-    int secondHighest = findSecondHighest(array, size);
-
-    if (secondHighest != -1) {
-        printf("The second highest element is: %d\n", secondHighest);
+struct Node *swapPairs(struct Node *head)
+{
+    if (head == NULL || head->next == NULL)
+    {
+        return head;
     }
+
+    struct Node *newHead = head->next; // New head after swapping
+    struct Node *prev = NULL;
+
+    while (head != NULL && head->next != NULL)
+    {
+        struct Node *nextNode = head->next->next; // Save the next pair
+
+        // Swap the current pair
+        head->next->next = head;
+        if (prev != NULL)
+        {
+            prev->next = head->next;
+        }
+        head->next = nextNode;
+
+        // Move pointers forward
+        prev = head;
+        head = nextNode;
+    }
+
+    return newHead;
+}
+
+int main()
+{
+    struct Node *head = NULL;
+    int num, data;
+
+    printf("Enter the number of elements in the list: ");
+    scanf("%d", &num);
+
+    printf("Enter the elements:\n");
+    for (int i = 0; i < num; i++)
+    {
+        scanf("%d", &data);
+        head = insert(head, data);
+    }
+
+    printf("Original List: ");
+    printList(head);
+
+    head = swapPairs(head);
+
+    printf("List after Pairwise Swapping: ");
+    printList(head);
 
     return 0;
 }

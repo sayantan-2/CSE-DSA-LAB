@@ -1,1 +1,1 @@
-WAP to find frequency of a given number ‘k’
+Write a program to detect a loop in a list.
