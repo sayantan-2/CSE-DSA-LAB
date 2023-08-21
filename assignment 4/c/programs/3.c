@@ -1,62 +1,51 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <malloc.h>
 
-// Define a structure to represent a node in the linked list
-struct Node
+typedef struct node
 {
-    int data;
-    struct Node *next;
-};
+    int item;
+    struct node *next;
+} Node;
 
-// Function to create a new node with the given data and insert it at the end of the list
-void insert_at_end(struct Node **head, int data)
+Node *START = NULL;
+void create_list(int item)
 {
-    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
-    new_node->data = data;
-    new_node->next = NULL;
-    if (*head == NULL)
+    Node *temp, *ptr;
+    temp = (Node *)malloc(sizeof(Node));
+    temp->item = item;
+    temp->next = NULL;
+    if (START == NULL)
     {
-        *head = new_node;
-        return;
+        START = temp;
     }
-    struct Node *current = *head;
-    while (current->next != NULL)
+    else
     {
-        current = current->next;
+        ptr = START;
+        while (ptr->next != NULL)
+        {
+            ptr = ptr->next;
+        }
+        ptr->next = temp;
     }
-    current->next = new_node;
 }
-
-// Function to print the elements of the linked list
-void print_list(struct Node *head)
-{
-    struct Node *current = head;
-    while (current != NULL)
-    {
-        printf("%d ", current->data);
-        current = current->next;
-    }
-    printf("\n");
-}
-
 int main()
 {
-    // Create an empty linked list
-    struct Node *head = NULL;
-
-    // Insert elements into the list
-    int N, data;
-    printf("Enter the number of elements to insert: ");
-    scanf("%d", &N);
-    for (int i = 0; i < N; i++)
+    int n, i, data;
+    Node *temp, *p;
+    printf("Enter the number of item: ");
+    scanf("%d", &n);
+    for (i = 0; i < n; i++)
     {
-        printf("Enter element %d: ", i + 1);
+        printf("Enter the data item: ");
         scanf("%d", &data);
-        insert_at_end(&head, data);
+        create_list(data);
     }
-
-    // Print the elements of the list
-    print_list(head);
-
-    return 0;
+    p = START;
+    printf("START");
+    printf("-->%d", p->item);
+    while (p->next != NULL)
+    {
+        p = p->next;
+        printf("-->%d", p->item);
+    }
 }
