@@ -27,7 +27,7 @@ def print_list(head):
     print()
 
 
-def main():
+if __name__ == "__main__":
     # Create an empty linked list
     head = None
 
@@ -39,7 +39,3 @@ def main():
 
     # Print the elements of the list
     print_list(head)
-
-
-if __name__ == "__main__":
-    main()

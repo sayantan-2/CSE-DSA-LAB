@@ -8,4 +8,4 @@ Enter the elements:
 Enter the value of k: 3
 
 Original Linked List: 10 20 30 40 50
-Left-Shifted Linked List: 40 50 10 20 30
+Left-Shifted Linked List:30 40 50 10 20
