@@ -1,2 +1,3 @@
-Original array: 2 4 6 4 8 2 10 6 
-Array with duplicates removed: 2 4 6 8 10 
+Initial Doubly Linked List: A -> B -> C -> A -> D -> E ->
+Enter the character to remove: C
+Updated Doubly Linked List: A -> B -> A -> D -> E ->

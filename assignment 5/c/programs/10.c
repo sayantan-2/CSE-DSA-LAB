@@ -1,57 +1,56 @@
-// Write a program to merge two sorted array of length M & N
+#include<stdio.h>
+#include<stdlib.h>
 
-#include <stdio.h>
+struct node {
+    int data;
+    struct node* left;
+    struct node* right;
+};
 
-void mergeArrays(int array1[], int M, int array2[], int N, int mergedArray[]) {
-    int i = 0, j = 0, k = 0;
+void BinaryTreeToDLL(struct node* root, struct node** head) {
+    if (root == NULL) return;
 
-    while (i < M && j < N) {
-        if (array1[i] <= array2[j]) {
-            mergedArray[k++] = array1[i++];
-        } else {
-            mergedArray[k++] = array2[j++];
-        }
+    static struct node* prev = NULL;
+
+    BinaryTreeToDLL(root->left, head);
+
+    if (prev == NULL)
+        *head = root;
+    else {
+        root->left = prev;
+        prev->right = root;
     }
+    prev = root;
 
-    // Copy the remaining elements from array1, if any
-    while (i < M) {
-        mergedArray[k++] = array1[i++];
-    }
+    BinaryTreeToDLL(root->right, head);
+}
 
-    // Copy the remaining elements from array2, if any
-    while (j < N) {
-        mergedArray[k++] = array2[j++];
+struct node* newNode(int data) {
+    struct node* node = (struct node*)malloc(sizeof(struct node));
+    node->data = data;
+    node->left = node->right = NULL;
+    return node;
+}
+
+void printList(struct node* node) {
+    while (node != NULL) {
+        printf("%d ", node->data);
+        node = node->right;
     }
 }
 
 int main() {
-    int array1[] = {1, 3, 5, 7, 9};
-    int M = sizeof(array1) / sizeof(array1[0]);
+    struct node* root = newNode(10);
+    root->left = newNode(12);
+    root->right = newNode(15);
+    root->left->left = newNode(25);
+    root->left->right = newNode(30);
+    root->right->left = newNode(36);
 
-    int array2[] = {2, 4, 6, 8, 10, 12};
-    int N = sizeof(array2) / sizeof(array2[0]);
+    struct node* head = NULL;
+    BinaryTreeToDLL(root, &head);
 
-    int mergedArray[M + N];
-
-    printf("Array 1: ");
-    for (int i = 0; i < M; i++) {
-        printf("%d ", array1[i]);
-    }
-    printf("\n");
-
-    printf("Array 2: ");
-    for (int i = 0; i < N; i++) {
-        printf("%d ", array2[i]);
-    }
-    printf("\n");
-
-    mergeArrays(array1, M, array2, N, mergedArray);
-
-    printf("Merged and sorted array: ");
-    for (int i = 0; i < M + N; i++) {
-        printf("%d ", mergedArray[i]);
-    }
-    printf("\n");
+    printList(head);
 
     return 0;
 }

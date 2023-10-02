@@ -1,4 +1,4 @@
-   A 
-  B B 
- C C C 
-D D D D 
+Doubly Linked List (Forward): 0 <-> 1 <-> 2 <-> 3 <-> 4 <-> None
+Doubly Linked List (Backward): 4 <-> 3 <-> 2 <-> 1 <-> 0 <-> None
+Doubly Linked List (Forward): 0 <-> 1 <-> 3 <-> 4 <-> None
+Doubly Linked List (Backward): 4 <-> 3 <-> 1 <-> 0 <-> None

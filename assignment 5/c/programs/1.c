@@ -1,23 +1,56 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+void addNode(struct Node **head_ref, int new_data)
+{
+    struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *last = *head_ref;
+
+    new_node->data = new_data;
+    new_node->next = *head_ref;
+
+    if (*head_ref != NULL)
+    {
+        while (last->next != *head_ref)
+            last = last->next;
+        last->next = new_node;
+    }
+    else
+        new_node->next = new_node;
+
+    *head_ref = new_node;
+}
+
+void printList(struct Node *head)
+{
+    struct Node *temp = head;
+    if (head != NULL)
+    {
+        do
+        {
+            printf("%d ", temp->data);
+            temp = temp->next;
+        } while (temp != head);
+    }
+}
+
 int main()
 {
-    int a = 1;
-    for (int i = 0; i < 5; i++)
-    {
-        for (int j = 0; j < i + 1; j++)
-        {
-            if (a % 2 != 0)
-            {
-                printf("*");
-            }
-            else
-            {
-                printf("#");
-            }
-            a++;
-        }
-        printf("\n");
-    }
+    struct Node *head = NULL;
+
+    addNode(&head, 12);
+    addNode(&head, 56);
+    addNode(&head, 2);
+    addNode(&head, 11);
+
+    printf("Contents of Circular Linked List\n ");
+    printList(head);
 
     return 0;
 }

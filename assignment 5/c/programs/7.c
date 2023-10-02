@@ -1,38 +1,117 @@
-//wap to remove duplicate elements from an array
 #include <stdio.h>
+#include <stdlib.h>
 
-void deleteDuplicates(int array[], int *size) {
-    for (int i = 0; i < *size; i++) {
-        for (int j = i + 1; j < *size; j++) {
-            if (array[i] == array[j]) {
-                // Shift elements to the left to remove the duplicate
-                for (int k = j; k < (*size) - 1; k++) {
-                    array[k] = array[k + 1];
-                }
-                (*size)--;
-                j--; // Re-check the current index, as it has a new element after the shift
-            }
-        }
+// Define the structure for a node in the doubly linked list
+struct Node {
+    char data;
+    struct Node* prev;
+    struct Node* next;
+};
+
+// Function to create a new node
+struct Node* createNode(char data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    if (newNode == NULL) {
+        printf("Memory allocation failed.\n");
+        exit(1);
     }
+    newNode->data = data;
+    newNode->prev = NULL;
+    newNode->next = NULL;
+    return newNode;
+}
+
+// Function to insert a node at the end of the doubly linked list
+struct Node* insertAtEnd(struct Node* head, char data) {
+    struct Node* newNode = createNode(data);
+
+    if (head == NULL) {
+        newNode->next = newNode;
+        newNode->prev = newNode;
+        return newNode;
+    }
+
+    newNode->next = head;
+    newNode->prev = head->prev;
+    head->prev->next = newNode;
+    head->prev = newNode;
+
+    return head;
+}
+
+// Function to remove a character from the doubly linked list
+struct Node* removeCharacter(struct Node* head, char target) {
+    if (head == NULL) {
+        printf("List is empty.\n");
+        return NULL;
+    }
+
+    struct Node* current = head;
+
+    do {
+        if (current->data == target) {
+            // If the node to be removed is the head node
+            if (current == head) {
+                head = head->next;
+                head->prev = current->prev;
+                current->prev->next = head;
+                free(current);
+                current = head; // Move to the next node
+            } else {
+                struct Node* temp = current;
+                current->prev->next = current->next;
+                current->next->prev = current->prev;
+                current = current->next; // Move to the next node
+                free(temp);
+            }
+        } else {
+            current = current->next;
+        }
+    } while (current != head);
+
+    return head;
+}
+
+// Function to display the doubly linked list
+void display(struct Node* head) {
+    if (head == NULL) {
+        printf("List is empty.\n");
+        return;
+    }
+
+    struct Node* current = head;
+
+    do {
+        printf("%c -> ", current->data);
+        current = current->next;
+    } while (current != head);
+
+    printf("\n");
 }
 
 int main() {
-    int array[] = {2, 4, 6, 4, 8, 2, 10, 6};
-    int size = sizeof(array) / sizeof(array[0]);
+    struct Node* head = NULL;
 
-    printf("Original array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
+    // Initialize a predefined doubly linked list with characters
+    head = insertAtEnd(head, 'A');
+    head = insertAtEnd(head, 'B');
+    head = insertAtEnd(head, 'C');
+    head = insertAtEnd(head, 'A');
+    head = insertAtEnd(head, 'D');
+    head = insertAtEnd(head, 'E');
 
-    deleteDuplicates(array, &size);
+    printf("Initial Doubly Linked List: ");
+    display(head);
 
-    printf("Array with duplicates removed: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
+    char target;
+    printf("Enter the character to remove: ");
+    scanf(" %c", &target); // Note the space before %c to consume the newline character
+
+    // Remove the specified character
+    head = removeCharacter(head, target);
+
+    printf("Updated Doubly Linked List: ");
+    display(head);
 
     return 0;
 }

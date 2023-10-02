@@ -1,2 +1,6 @@
-Enter limit-5
-40
+Circular Linked List:
+1 -> 2 -> 3 -> Head
+Circular Linked List after Insertion:
+1 -> 2 -> 4 -> 3 -> Head
+Circular Linked List after Deletion:
+1 -> 4 -> 3 -> Head

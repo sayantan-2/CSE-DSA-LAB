@@ -1,1 +1,0 @@
-Write a program to check whether a matrix is sparse or not.

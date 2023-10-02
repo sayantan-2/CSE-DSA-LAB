@@ -1,2 +1,6 @@
-Enter the index of the element to be deleted: 4
-[1, 2, 3, 4, 6, 7, 8, 9, 10]
+Doubly Circular Linked List:
+1 <-> 2 <-> 3 <-> Head
+Doubly Circular Linked List after Insertion:
+1 <-> 2 <-> 4 <-> 3 <-> Head
+Doubly Circular Linked List after Deletion:
+1 <-> 4 <-> 3 <-> Head

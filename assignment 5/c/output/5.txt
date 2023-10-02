@@ -1,3 +1,7 @@
-Enter the location: 5
-Enter the number: 48
-1, 2, 3, 4, 5, 48, 6, 7, 8, 9, 10
+Initial Doubly Linked List: Doubly Linked List: 10 -> 20 -> 30 -> NULL
+
+Enter data to insert at the end: 15
+Doubly Linked List: 10 -> 20 -> 30 -> 15 -> NULL
+
+Enter position to delete: 2
+Doubly Linked List: 10 -> 30 -> 15 -> NULL

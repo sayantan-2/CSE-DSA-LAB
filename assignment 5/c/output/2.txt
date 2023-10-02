@@ -1,4 +1,5 @@
-   A 
-  B B 
- C C C 
-D D D D 
+Created DLL is:
+Traversal in forward direction
+ 4  1  7  6
+Traversal in reverse direction
+ 6  7  1  4 

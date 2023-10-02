@@ -1,2 +1,7 @@
-Enter limit-5
-40
+Initial Circular Linked List: 10 -> 20 -> 30 ->
+
+Enter data to insert: 15
+Updated Circular Linked List: 10 -> 20 -> 30 -> 15 ->
+
+Enter data to delete: 20
+Updated Circular Linked List: 10 -> 30 -> 15 ->
