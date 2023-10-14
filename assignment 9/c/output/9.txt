@@ -1,3 +1,1 @@
-Array: 2 5 7 5 9 2 1 5 
-Enter the number to find its frequency: 5
-Frequency of 5 in the array: 3
+Minimum index of a repeating element: 0

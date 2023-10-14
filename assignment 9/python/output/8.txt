@@ -1,1 +1,4 @@
-10
+Grouped elements based on their first occurrence:
+[[1, 2, 3, 1]]
+[[2, 3, 1, 2]]
+[[3, 1, 2, 4, 5, 3]]

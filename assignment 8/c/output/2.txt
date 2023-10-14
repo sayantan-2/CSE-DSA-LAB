@@ -1,4 +1,1 @@
-   A 
-  B B 
- C C C 
-D D D D 
+Element 12 found at index 4.

@@ -1,5 +1,1 @@
-*
-#*
-*#*
-#*#*
-*#*#*
+Element 15 found at index 4

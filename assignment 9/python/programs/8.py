@@ -1,17 +1,25 @@
-#python program to find 2nd highest number in an array
-def find_second_highest(arr):
-    if len(arr) < 2:
-        return "Array should have at least 2 elements"
-    highest = max(arr[0], arr[1])
-    second_highest = min(arr[0], arr[1])
-    for i in range(2, len(arr)):
-        if arr[i] > highest:
-            second_highest = highest
-            highest = arr[i]
-        elif arr[i] > second_highest and arr[i] != highest:
-            second_highest = arr[i]
-    return second_highest
- 
-arr=[5, 2, 9, 1, 8, 3, 7, 6, 10, 4, 2, 6, 3, 1, 9, 7, 8, 4, 10, 2s5]
-second_highest = find_second_highest(arr)
-print(second_highest)
+def group_elements_by_first_occurrence(arr):
+    element_indices = {}  # Dictionary to store the first occurrence indices of elements
+    grouped_elements = {}
+
+    for index, element in enumerate(arr):
+        if element in element_indices:
+            first_occurrence_index = element_indices[element]
+            if element in grouped_elements:
+                grouped_elements[element].append(
+                    arr[first_occurrence_index : index + 1]
+                )
+            else:
+                grouped_elements[element] = [arr[first_occurrence_index : index + 1]]
+        else:
+            element_indices[element] = index
+
+    return list(grouped_elements.values())
+
+
+# Example usage
+arr = [1, 2, 3, 1, 2, 4, 5, 3, 6]
+grouped = group_elements_by_first_occurrence(arr)
+print("Grouped elements based on their first occurrence:")
+for group in grouped:
+    print(group)

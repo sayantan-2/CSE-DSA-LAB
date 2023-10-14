@@ -1,5 +1,31 @@
-# Write a program to find frequency of a given number ‘k’
-arr=[5, 2, 9, 1, 8, 3, 7, 6, 10, 4, 2, 6, 3, 1, 9, 7, 8, 4, 10, 5]
-k=int(input("enter the number:"))
-count=arr.count(k)
-print(count)
+from queue import Queue
+
+
+def reverse_queue(queue):
+    stack = []
+    while not queue.empty():
+        stack.append(queue.get())
+
+    while stack:
+        queue.put(stack.pop())
+
+
+# Example usage:
+if __name__ == "__main__":
+    q = Queue()
+
+    for i in range(1, 6):
+        q.put(i)
+
+    print("Original Queue:")
+    while not q.empty():
+        print(q.get(), end=" ")
+
+    for i in range(1, 6):
+        q.put(i)
+
+    reverse_queue(q)
+
+    print("\nReversed Queue:")
+    while not q.empty():
+        print(q.get(), end=" ")

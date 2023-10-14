@@ -1,2 +1,3 @@
-Original array: 2 4 6 4 8 2 10 6 
-Array with duplicates removed: 2 4 6 8 10 
+Popped: 30
+Popped: 20
+Popped: 40

@@ -1,2 +1,3 @@
-enter the number: 5
-2
+Enter a string: hello
+Original string: hello
+Reversed string: olleh

@@ -1,34 +1,51 @@
-//program to find frequency of a given number k
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int findFrequency(int array[], int size, int k) {
-    int frequency = 0;
+#define MAX_SIZE 100
 
-    for (int i = 0; i < size; i++) {
-        if (array[i] == k) {
-            frequency++;
-        }
+char stack[MAX_SIZE];
+int top = -1;
+
+void push(char element)
+{
+    if (top == MAX_SIZE - 1)
+    {
+        printf("Stack overflow\n");
+        return;
     }
-
-    return frequency;
+    stack[++top] = element;
 }
 
-int main() {
-    int array[] = {2, 5, 7, 5, 9, 2, 1, 5};
-    int size = sizeof(array) / sizeof(array[0]);
-    int k;
-
-    printf("Array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+char pop()
+{
+    if (top == -1)
+    {
+        printf("Stack underflow\n");
+        return -1;
     }
-    printf("\n");
+    return stack[top--];
+}
 
-    printf("Enter the number to find its frequency: ");
-    scanf("%d", &k);
+void reverseString(char *string)
+{
+    int length = strlen(string);
+    for (int i = 0; i < length; i++)
+    {
+        push(string[i]);
+    }
+    for (int i = 0; i < length; i++)
+    {
+        string[i] = pop();
+    }
+}
 
-    int frequency = findFrequency(array, size, k);
-    printf("Frequency of %d in the array: %d\n", k, frequency);
-
+int main()
+{
+    char string[MAX_SIZE];
+    printf("Enter a string: ");
+    scanf("%s", string);
+    reverseString(string);
+    printf("The reversed string is: %s\n", string);
     return 0;
 }

@@ -1,2 +1,4 @@
-Array: 10 5 8 20 15 7 
-The second highest element is: 15
+Dequeued: 10
+Dequeued: 20
+Dequeued: 30
+Dequeued: 40

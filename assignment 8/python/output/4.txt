@@ -1,2 +1,1 @@
-Enter limit-5
-40
+The number occurring an odd number of times is: 3

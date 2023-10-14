@@ -1,18 +1,44 @@
 #include <stdio.h>
+#include <stdlib.h>
+
+struct Node
+{
+    int data;
+    struct Node *next;
+};
+
+struct Node *top = NULL;
+
+void push(int element)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    newNode->data = element;
+    newNode->next = top;
+    top = newNode;
+}
+
+int pop()
+{
+    if (top == NULL)
+    {
+        printf("Stack underflow\n");
+        return -1;
+    }
+    struct Node *temp = top;
+    int poppedElement = temp->data;
+    top = top->next;
+    free(temp);
+    return poppedElement;
+}
+
 int main()
 {
-    int i, j, k;
-    for (i = 0; i < 4; i++)
-    {
-        for (j = i; j < 3; j++)
-        {
-            printf(" ");
-        }
-        for (k = 0; k < i + 1; k++)
-        {
-            printf("%c ", 65 + i);
-        }
-        printf("\n");
-    }
+    push(10);
+    push(20);
+    push(30);
+    printf("%d\n", pop());
+    printf("%d\n", pop());
+    printf("%d\n", pop());
+    printf("%d\n", pop());
     return 0;
 }

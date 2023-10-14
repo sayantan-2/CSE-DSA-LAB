@@ -1,2 +1,8 @@
-Array: 10 5 8 20 15 7 
-The second highest element is: 15
+Grouped elements based on their first occurrence:
+Group 0: 4
+Group 1: 2
+ (Group 0)
+Group 2: 1
+Group 3: 6
+ (Group 1)
+ (Group 0)

@@ -1,23 +1,37 @@
 #include <stdio.h>
+#define MAX_SIZE 100
+
+int stack[MAX_SIZE];
+int top = -1;
+
+void push(int element)
+{
+    if (top == MAX_SIZE - 1)
+    {
+        printf("Stack overflow\n");
+        return;
+    }
+    stack[++top] = element;
+}
+
+int pop()
+{
+    if (top == -1)
+    {
+        printf("Stack underflow\n");
+        return -1;
+    }
+    return stack[top--];
+}
+
 int main()
 {
-    int a = 1;
-    for (int i = 0; i < 5; i++)
-    {
-        for (int j = 0; j < i + 1; j++)
-        {
-            if (a % 2 != 0)
-            {
-                printf("*");
-            }
-            else
-            {
-                printf("#");
-            }
-            a++;
-        }
-        printf("\n");
-    }
-
+    push(10);
+    push(20);
+    push(30);
+    printf("%d\n", pop());
+    printf("%d\n", pop());
+    printf("%d\n", pop());
+    printf("%d\n", pop());
     return 0;
 }

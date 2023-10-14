@@ -1,38 +1,77 @@
-//wap to remove duplicate elements from an array
 #include <stdio.h>
+#include <stdlib.h>
 
-void deleteDuplicates(int array[], int *size) {
-    for (int i = 0; i < *size; i++) {
-        for (int j = i + 1; j < *size; j++) {
-            if (array[i] == array[j]) {
-                // Shift elements to the left to remove the duplicate
-                for (int k = j; k < (*size) - 1; k++) {
-                    array[k] = array[k + 1];
-                }
-                (*size)--;
-                j--; // Re-check the current index, as it has a new element after the shift
-            }
-        }
+struct Node
+{
+    struct Node *left, *right;
+    int leftTag, rightTag;
+    int data;
+};
+
+struct Node *newNode(int item)
+{
+    struct Node *temp = (struct Node *)malloc(sizeof(struct Node));
+    temp->left = temp->right = NULL;
+    temp->data = item;
+    return temp;
+}
+
+void makeEmpty(struct Node *node)
+{
+    if (node != NULL)
+    {
+        makeEmpty(node->left);
+        makeEmpty(node->right);
+        free(node);
     }
 }
 
-int main() {
-    int array[] = {2, 4, 6, 4, 8, 2, 10, 6};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    printf("Original array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+void insert(struct Node **node, int data)
+{
+    if (*node == NULL)
+    {
+        *node = newNode(data);
     }
-    printf("\n");
-
-    deleteDuplicates(array, &size);
-
-    printf("Array with duplicates removed: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+    else if (data <= (*node)->data)
+    {
+        insert(&((*node)->left), data);
+        (*node)->leftTag = 1;
     }
-    printf("\n");
+    else
+    {
+        insert(&((*node)->right), data);
+        (*node)->rightTag = 1;
+    }
+}
+
+void inOrder(struct Node *node)
+{
+    if (node != NULL)
+    {
+        if (node->leftTag == 1)
+            inOrder(node->left);
+        printf("%d ", node->data);
+        if (node->rightTag == 1)
+            inOrder(node->right);
+    }
+}
+
+int main()
+{
+    struct Node *root = NULL;
+
+    insert(&root, 50);
+    insert(&root, 30);
+    insert(&root, 20);
+    insert(&root, 40);
+    insert(&root, 70);
+    insert(&root, 60);
+    insert(&root, 80);
+
+    printf("Inorder traversal of the given tree \n");
+    inOrder(root);
+
+    makeEmpty(root);
 
     return 0;
 }

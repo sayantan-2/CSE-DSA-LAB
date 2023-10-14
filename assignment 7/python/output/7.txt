@@ -1,1 +1,6 @@
-[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+Top element: 30
+Popped: 30
+Top element: 40
+Popped: 40
+Popped: 20
+Is stack empty? False

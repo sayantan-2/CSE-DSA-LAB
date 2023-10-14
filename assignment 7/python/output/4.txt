@@ -1,2 +1,15 @@
-Enter limit-5
-40
+Enqueued in Queue 0: 10
+Enqueued in Queue 1: 20
+Enqueued in Queue 2: 30
+Enqueued in Queue 0: 40
+Enqueued in Queue 1: 50
+Enqueued in Queue 2: 60
+Queue 0 elements: 10 40
+Queue 1 elements: 20 50
+Queue 2 elements: 30 60
+Dequeued from Queue 0: 10
+Dequeued from Queue 1: 20
+Dequeued from Queue 2: 30
+Queue 0 elements: 40
+Queue 1 elements: 50
+Queue 2 elements: 60

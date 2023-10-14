@@ -1,51 +1,46 @@
-//to find second highest element from an array
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int findSecondHighest(int array[], int size) {
-    if (size < 2) {
-        printf("The array should have at least two elements.\n");
-        return -1;
+void groupElementsByFirstOccurrence(int arr[], int size)
+{
+    // Create a dictionary to store the first occurrence index of each element
+    int *firstOccurrence = (int *)malloc(size * sizeof(int));
+    for (int i = 0; i < size; i++)
+    {
+        firstOccurrence[i] = -1; // Initialize with -1 to indicate no occurrence yet
     }
 
-    int highest = array[0];
-    int secondHighest = array[1];
+    // Create a counter for the group numbers
+    int groupCounter = 0;
 
-    if (secondHighest > highest) {
-        // Swap highest and secondHighest if needed
-        int temp = highest;
-        highest = secondHighest;
-        secondHighest = temp;
-    }
-
-    for (int i = 2; i < size; i++) {
-        if (array[i] > highest) {
-            // Update highest and shift the previous highest to second highest
-            secondHighest = highest;
-            highest = array[i];
-        } else if (array[i] > secondHighest && array[i] != highest) {
-            // Update secondHighest if a new second highest element is found
-            secondHighest = array[i];
+    for (int i = 0; i < size; i++)
+    {
+        if (firstOccurrence[arr[i]] == -1)
+        {
+            // This element is seen for the first time
+            firstOccurrence[arr[i]] = groupCounter++;
+            printf("Group %d: %d", firstOccurrence[arr[i]], arr[i]);
         }
+        else
+        {
+            // This element has been seen before
+            printf(" (Group %d)", firstOccurrence[arr[i]]);
+        }
+
+        printf("\n");
     }
 
-    return secondHighest;
+    free(firstOccurrence);
 }
 
-int main() {
-    int array[] = {10, 5, 8, 20, 15, 7};
-    int size = sizeof(array) / sizeof(array[0]);
+int main()
+{
+    int arr[] = {4, 2, 4, 1, 6, 2, 4};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    printf("Array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
-
-    int secondHighest = findSecondHighest(array, size);
-
-    if (secondHighest != -1) {
-        printf("The second highest element is: %d\n", secondHighest);
-    }
+    printf("Grouped elements based on their first occurrence:\n");
+    groupElementsByFirstOccurrence(arr, size);
 
     return 0;
 }

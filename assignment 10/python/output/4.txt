@@ -1,2 +1,3 @@
-Enter limit-5
-40
+Inorder Traversal: [3, 5, 7, 10, 12, 15, 18]
+Searching for 7: True
+Searching for 8: False

@@ -1,2 +1,2 @@
-Original array: 2 4 6 4 8 2 10 6 
-Array with duplicates removed: 2 4 6 8 10 
+Unsorted array: 64 34 25 12 22 11 90
+Sorted array: 11 12 22 25 34 64 90

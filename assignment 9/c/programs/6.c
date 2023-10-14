@@ -1,30 +1,55 @@
-//program to delete ana element from an array
 #include <stdio.h>
 
-void printarray(int array[], int length)
+void findLargestConsecutiveSubarray(int arr[], int size)
 {
-    for (int i = 0; i < length; i++)
+    int maxLength = 0;  // Length of the largest consecutive subarray
+    int startIndex = 0; // Starting index of the largest consecutive subarray
+    int endIndex = 0;   // Ending index of the largest consecutive subarray
+
+    int currentLength = 1; // Length of the current consecutive subarray
+
+    for (int i = 1; i < size; i++)
     {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
-}
-int main()
-{
-    int arr[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int e;
-    printf("enter the element to be deleted:");
-    scanf("%d", &e);
-    for (int i = 0; i < 9; i++)
-    {
-        if (arr[i] == e)
+        if (arr[i] == arr[i - 1] + 1)
         {
-            for (int j = i; j < 8; j++)
+            currentLength++;
+        }
+        else
+        {
+            if (currentLength > maxLength)
             {
-                arr[j] = arr[j + 1];
+                maxLength = currentLength;
+                startIndex = i - maxLength;
+                endIndex = i - 1;
             }
+            currentLength = 1;
         }
     }
-    printarray(arr,8);
+
+    // Check if the last subarray is the largest
+    if (currentLength > maxLength)
+    {
+        maxLength = currentLength;
+        startIndex = size - maxLength;
+        endIndex = size - 1;
+    }
+
+    if (maxLength > 0)
+    {
+        printf("Largest consecutive subarray is [%d, %d]\n", startIndex, endIndex);
+    }
+    else
+    {
+        printf("No consecutive subarray found.\n");
+    }
+}
+
+int main()
+{
+    int arr[] = {1, 2, 3, 4, 5, 7, 8, 9, 10};
+    int size = sizeof(arr) / sizeof(arr[0]);
+
+    findLargestConsecutiveSubarray(arr, size);
+
     return 0;
 }

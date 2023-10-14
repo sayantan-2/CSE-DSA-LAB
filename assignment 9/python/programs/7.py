@@ -1,10 +1,22 @@
-#a python program to delete duplicate elements from array
+def find_pairs_with_difference(arr, k):
+    pair_set = set()
+    result = []
 
-arr=[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10]
-arr2=[]
+    for num in arr:
+        if num - k in pair_set:
+            result.append((num - k, num))
+        if num + k in pair_set:
+            result.append((num, num + k))
 
-for i in range(len(arr)):
-        if arr[i] not in arr[i+1:len(arr)]:
-            arr2.append(arr[i])
+        pair_set.add(num)
 
-print(arr2)
+    return result
+
+
+# Example usage
+arr = [1, 5, 3, 4, 2]
+k = 2
+pairs = find_pairs_with_difference(arr, k)
+
+for pair in pairs:
+    print(f"Pair with a difference of {k}: {pair[0]} and {pair[1]}")

@@ -1,5 +1,1 @@
-*
-#*
-*#*
-#*#*
-*#*#*
+Pair with the sum 10: 8 and 2

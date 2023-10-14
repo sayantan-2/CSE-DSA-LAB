@@ -1,2 +1,6 @@
-Enter limit-5
-40
+Queue is empty
+Queue is empty
+Queue underflow
+Queue underflow
+Queue is empty
+Queue is empty

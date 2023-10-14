@@ -1,4 +1,8 @@
-   A 
-  B B 
- C C C 
-D D D D 
+In-order Traversal:
+4 2 5 1 6 3 7
+
+Pre-order Traversal:
+1 2 4 5 3 6 7
+
+Post-order Traversal:
+4 5 2 6 7 3 1

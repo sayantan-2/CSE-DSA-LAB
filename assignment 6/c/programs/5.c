@@ -1,29 +1,82 @@
-//Write a program to insert a new element in array at given location k. 
-
 #include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#include <string.h>
+
+#define MAX_SIZE 100
+
+int stack[MAX_SIZE];
+int top = -1;
+
+void push(int element)
+{
+    if (top == MAX_SIZE - 1)
+    {
+        printf("Stack overflow\n");
+        return;
+    }
+    stack[++top] = element;
+}
+
+int pop()
+{
+    if (top == -1)
+    {
+        printf("Stack underflow\n");
+        return -1;
+    }
+    return stack[top--];
+}
+
+int evaluatePostfix(char *postfixExpression)
+{
+    int length = strlen(postfixExpression);
+    for (int i = 0; i < length; i++)
+    {
+        char currentCharacter = postfixExpression[i];
+        if (isdigit(currentCharacter))
+        {
+            push(currentCharacter - '0');
+        }
+        else
+        {
+            int operand2 = pop();
+            int operand1 = pop();
+            switch (currentCharacter)
+            {
+            case '+':
+                push(operand1 + operand2);
+                break;
+            case '-':
+                push(operand1 - operand2);
+                break;
+            case '*':
+                push(operand1 * operand2);
+                break;
+            case '/':
+                push(operand1 / operand2);
+                break;
+            case '%':
+                push(operand1 % operand2);
+                break;
+            default:
+                printf("Invalid operator\n");
+                return -1;
+            }
+        }
+    }
+    return pop();
+}
+
 int main()
 {
-    int arr[11] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int k, n;
-    printf("Enter the location: ");
-    scanf("%d", &k);
-    printf("Enter the number: ");
-    scanf("%d", &n);
-    if (k < 0 || k > 10)
+    char postfixExpression[MAX_SIZE];
+    printf("Enter a postfix expression: ");
+    scanf("%s", postfixExpression);
+    int result = evaluatePostfix(postfixExpression);
+    if (result != -1)
     {
-        printf("Invalid location!\n");
-        return 0;
+        printf("The result is: %d\n", result);
     }
-    for (int i = 10; i >= k; i--)
-    {
-        arr[i] = arr[i - 1];
-    }
-    arr[k] = n;
-    printf("Updated array: ");
-    for (int i = 0; i <= 10; i++)
-    {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
     return 0;
 }

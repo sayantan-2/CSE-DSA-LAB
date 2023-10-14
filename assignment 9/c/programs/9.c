@@ -1,34 +1,53 @@
-//program to find frequency of a given number k
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-int findFrequency(int array[], int size, int k) {
-    int frequency = 0;
+void findMinimumIndexOfRepeatingElement(int arr[], int size)
+{
+    // Create a dictionary to store the index of the first occurrence of each element
+    int *firstOccurrence = (int *)malloc(size * sizeof(int));
+    for (int i = 0; i < size; i++)
+    {
+        firstOccurrence[i] = -1; // Initialize with -1 to indicate no occurrence yet
+    }
 
-    for (int i = 0; i < size; i++) {
-        if (array[i] == k) {
-            frequency++;
+    int minIndex = size;
+
+    for (int i = 0; i < size; i++)
+    {
+        if (firstOccurrence[arr[i]] == -1)
+        {
+            // This element is seen for the first time
+            firstOccurrence[arr[i]] = i;
+        }
+        else
+        {
+            // This element has been seen before, update minIndex if needed
+            if (firstOccurrence[arr[i]] < minIndex)
+            {
+                minIndex = firstOccurrence[arr[i]];
+            }
         }
     }
 
-    return frequency;
+    if (minIndex < size)
+    {
+        printf("Minimum index of a repeating element: %d\n", minIndex);
+    }
+    else
+    {
+        printf("No repeating elements found.\n");
+    }
+
+    free(firstOccurrence);
 }
 
-int main() {
-    int array[] = {2, 5, 7, 5, 9, 2, 1, 5};
-    int size = sizeof(array) / sizeof(array[0]);
-    int k;
+int main()
+{
+    int arr[] = {4, 2, 6, 1, 6, 2, 4};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    printf("Array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
-
-    printf("Enter the number to find its frequency: ");
-    scanf("%d", &k);
-
-    int frequency = findFrequency(array, size, k);
-    printf("Frequency of %d in the array: %d\n", k, frequency);
+    findMinimumIndexOfRepeatingElement(arr, size);
 
     return 0;
 }

@@ -1,5 +1,17 @@
-# Write a program to find frequency of a given number ‘k’
-arr=[5, 2, 9, 1, 8, 3, 7, 6, 10, 4, 2, 6, 3, 1, 9, 7, 8, 4, 10, 5]
-k=int(input("enter the number:"))
-count=arr.count(k)
-print(count)
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[0]
+        left = [x for x in arr[1:] if x <= pivot]
+        right = [x for x in arr[1:] if x > pivot]
+        return quick_sort(left) + [pivot] + quick_sort(right)
+
+
+# Example usage:
+my_list = [64, 34, 25, 12, 22, 11, 90]
+
+sorted_list = quick_sort(my_list)
+
+print("Sorted array using Quick Sort:")
+print(sorted_list)

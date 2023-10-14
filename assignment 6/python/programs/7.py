@@ -1,10 +1,12 @@
-#a python program to delete duplicate elements from array
+def tower_of_hanoi(n, source, destination, auxiliary):
+    if n == 1:
+        print(f"Move disk 1 from rod {source} to rod {destination}")
+        return
+    tower_of_hanoi(n - 1, source, auxiliary, destination)
+    print(f"Move disk {n} from rod {source} to rod {destination}")
+    tower_of_hanoi(n - 1, auxiliary, destination, source)
 
-arr=[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10]
-arr2=[]
 
-for i in range(len(arr)):
-        if arr[i] not in arr[i+1:len(arr)]:
-            arr2.append(arr[i])
-
-print(arr2)
+# Example usage
+num_disks = int(input("Enter the number of disks: "))
+tower_of_hanoi(num_disks, "A", "C", "B")

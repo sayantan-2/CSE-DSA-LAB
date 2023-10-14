@@ -1,1 +1,2 @@
-10
+Enter a decimal number: 42
+The binary representation of 42 is 101010.

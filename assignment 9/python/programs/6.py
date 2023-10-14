@@ -1,5 +1,26 @@
-#a program to delete a element fron an array
-arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-n = int(input("Enter the index of the element to be deleted: "))
-arr.pop(n)
-print(arr)
+def find_largest_consecutive_subarray(arr):
+    max_length = 0
+    max_start = 0
+    num_set = set(arr)
+
+    for num in arr:
+        if num - 1 not in num_set:
+            current_num = num
+            current_length = 1
+
+            while current_num + 1 in num_set:
+                current_num += 1
+                current_length += 1
+
+            if current_length > max_length:
+                max_length = current_length
+                max_start = num
+
+    largest_subarray = [i for i in range(max_start, max_start + max_length)]
+    return largest_subarray
+
+
+# Example usage
+arr = [1, 3, 8, 4, 2, 2, 5, 6]
+largest_subarray = find_largest_consecutive_subarray(arr)
+print("Largest subarray formed by consecutive integers:", largest_subarray)

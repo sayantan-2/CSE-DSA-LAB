@@ -1,50 +1,93 @@
-//to find second highest element from an array
 #include <stdio.h>
 
-int findSecondHighest(int array[], int size) {
-    if (size < 2) {
-        printf("The array should have at least two elements.\n");
-        return -1;
-    }
+// Merge two subarrays of arr[].
+// First subarray is arr[l..m]
+// Second subarray is arr[m+1..r]
+void merge(int arr[], int l, int m, int r)
+{
+    int i, j, k;
+    int n1 = m - l + 1;
+    int n2 = r - m;
 
-    int highest = array[0];
-    int secondHighest = array[1];
+    // Create temporary arrays
+    int L[n1], R[n2];
 
-    if (secondHighest > highest) {
-        // Swap highest and secondHighest if needed
-        int temp = highest;
-        highest = secondHighest;
-        secondHighest = temp;
-    }
+    // Copy data to temporary arrays L[] and R[]
+    for (i = 0; i < n1; i++)
+        L[i] = arr[l + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[m + 1 + j];
 
-    for (int i = 2; i < size; i++) {
-        if (array[i] > highest) {
-            // Update highest and shift the previous highest to second highest
-            secondHighest = highest;
-            highest = array[i];
-        } else if (array[i] > secondHighest && array[i] != highest) {
-            // Update secondHighest if a new second highest element is found
-            secondHighest = array[i];
+    // Merge the temporary arrays back into arr[l..r]
+    i = 0;
+    j = 0;
+    k = l;
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            arr[k] = L[i];
+            i++;
         }
+        else
+        {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
     }
 
-    return secondHighest;
+    // Copy the remaining elements of L[], if there are any
+    while (i < n1)
+    {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    // Copy the remaining elements of R[], if there are any
+    while (j < n2)
+    {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
 }
 
-int main() {
-    int array[] = {10, 5, 8, 20, 15, 7};
-    int size = sizeof(array) / sizeof(array[0]);
+// Main function to implement merge sort
+void mergeSort(int arr[], int l, int r)
+{
+    if (l < r)
+    {
+        // Find the middle point
+        int m = l + (r - l) / 2;
 
-    printf("Array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+        // Sort the first and second halves
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        // Merge the sorted halves
+        merge(arr, l, m, r);
     }
-    printf("\n");
+}
 
-    int secondHighest = findSecondHighest(array, size);
+int main()
+{
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    if (secondHighest != -1) {
-        printf("The second highest element is: %d\n", secondHighest);
+    printf("Unsorted array: ");
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", arr[i]);
+    }
+
+    mergeSort(arr, 0, size - 1);
+
+    printf("\nSorted array: ");
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", arr[i]);
     }
 
     return 0;

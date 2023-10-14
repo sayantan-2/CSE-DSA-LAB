@@ -1,4 +1,1 @@
-   A 
-  B B 
- C C C 
-D D D D 
+Subarray with sum 0 exists.

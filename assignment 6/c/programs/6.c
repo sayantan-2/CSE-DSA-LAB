@@ -1,30 +1,49 @@
-//program to delete ana element from an array
 #include <stdio.h>
 
-void printarray(int array[], int length)
+// Recursive version to find factorial of a number
+int recursiveFactorial(int n)
 {
-    for (int i = 0; i < length; i++)
+    if (n == 0)
     {
-        printf("%d ", array[i]);
+        return 1;
     }
-    printf("\n");
+    else
+    {
+        return n * recursiveFactorial(n - 1);
+    }
 }
+
+// Tail recursive version to find factorial of a number
+int tailRecursiveFactorial(int n, int acc)
+{
+    if (n == 0)
+    {
+        return acc;
+    }
+    else
+    {
+        return tailRecursiveFactorial(n - 1, n * acc);
+    }
+}
+
+// Recursive version to find the Fibonacci series using a stack
+int recursiveFibonacci(int n)
+{
+    if (n <= 1)
+    {
+        return n;
+    }
+    else
+    {
+        return recursiveFibonacci(n - 1) + recursiveFibonacci(n - 2);
+    }
+}
+
 int main()
 {
-    int arr[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int e;
-    printf("enter the element to be deleted:");
-    scanf("%d", &e);
-    for (int i = 0; i < 9; i++)
-    {
-        if (arr[i] == e)
-        {
-            for (int j = i; j < 8; j++)
-            {
-                arr[j] = arr[j + 1];
-            }
-        }
-    }
-    printarray(arr,8);
+    // Example usage
+    printf("%d\n", recursiveFactorial(5));
+    printf("%d\n", tailRecursiveFactorial(5, 1));
+    printf("%d\n", recursiveFibonacci(10));
     return 0;
 }

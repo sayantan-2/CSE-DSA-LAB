@@ -1,38 +1,43 @@
-//wap to remove duplicate elements from an array
 #include <stdio.h>
 
-void deleteDuplicates(int array[], int *size) {
-    for (int i = 0; i < *size; i++) {
-        for (int j = i + 1; j < *size; j++) {
-            if (array[i] == array[j]) {
-                // Shift elements to the left to remove the duplicate
-                for (int k = j; k < (*size) - 1; k++) {
-                    array[k] = array[k + 1];
-                }
-                (*size)--;
-                j--; // Re-check the current index, as it has a new element after the shift
-            }
+// Function to perform insertion sort
+void insertionSort(int arr[], int size)
+{
+    for (int i = 1; i < size; i++)
+    {
+        int key = arr[i];
+        int j = i - 1;
+
+        // Move elements of arr[0..i-1] that are greater than key
+        // to one position ahead of their current position
+        while (j >= 0 && arr[j] > key)
+        {
+            arr[j + 1] = arr[j];
+            j--;
         }
+
+        arr[j + 1] = key;
     }
 }
 
-int main() {
-    int array[] = {2, 4, 6, 4, 8, 2, 10, 6};
-    int size = sizeof(array) / sizeof(array[0]);
+int main()
+{
+    int arr[] = {64, 34, 25, 12, 22, 11, 90};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    printf("Original array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+    printf("Unsorted array: ");
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", arr[i]);
     }
-    printf("\n");
 
-    deleteDuplicates(array, &size);
+    insertionSort(arr, size);
 
-    printf("Array with duplicates removed: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+    printf("\nSorted array: ");
+    for (int i = 0; i < size; i++)
+    {
+        printf("%d ", arr[i]);
     }
-    printf("\n");
 
     return 0;
 }

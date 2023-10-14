@@ -1,30 +1,96 @@
-//program to delete ana element from an array
 #include <stdio.h>
+#include <stdlib.h>
 
-void printarray(int array[], int length)
+// Define the structure for a binary search tree node
+struct Node
 {
-    for (int i = 0; i < length; i++)
-    {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
+    int data;
+    struct Node *left;
+    struct Node *right;
+};
+
+// Function to create a new node
+struct Node *createNode(int data)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
 }
+
+// Function to insert a node into the binary search tree
+struct Node *insert(struct Node *root, int data)
+{
+    if (root == NULL)
+    {
+        return createNode(data);
+    }
+
+    if (data < root->data)
+    {
+        root->left = insert(root->left, data);
+    }
+    else if (data > root->data)
+    {
+        root->right = insert(root->right, data);
+    }
+
+    return root;
+}
+
+// Function to mirror a binary search tree
+struct Node *mirrorBST(struct Node *root)
+{
+    if (root == NULL)
+    {
+        return NULL;
+    }
+
+    // Swap the left and right subtrees
+    struct Node *temp = root->left;
+    root->left = root->right;
+    root->right = temp;
+
+    // Recursively mirror the left and right subtrees
+    mirrorBST(root->left);
+    mirrorBST(root->right);
+
+    return root;
+}
+
+// Function to perform in-order traversal of the binary search tree
+void inOrderTraversal(struct Node *root)
+{
+    if (root != NULL)
+    {
+        inOrderTraversal(root->left);
+        printf("%d ", root->data);
+        inOrderTraversal(root->right);
+    }
+}
+
 int main()
 {
-    int arr[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
-    int e;
-    printf("enter the element to be deleted:");
-    scanf("%d", &e);
-    for (int i = 0; i < 9; i++)
+    struct Node *root = NULL;
+
+    // Input numbers to create the original BST
+    int numbers[] = {50, 30, 20, 40, 70, 60, 80};
+    int numCount = sizeof(numbers) / sizeof(numbers[0]);
+
+    // Insert numbers into the binary search tree
+    for (int i = 0; i < numCount; i++)
     {
-        if (arr[i] == e)
-        {
-            for (int j = i; j < 8; j++)
-            {
-                arr[j] = arr[j + 1];
-            }
-        }
+        root = insert(root, numbers[i]);
     }
-    printarray(arr,8);
+
+    // Mirror the BST
+    struct Node *mirroredRoot = mirrorBST(root);
+
+    // Perform in-order traversal to display the mirror image
+    printf("In-order traversal of the mirror image: ");
+    inOrderTraversal(mirroredRoot);
+    printf("\n");
+
     return 0;
 }

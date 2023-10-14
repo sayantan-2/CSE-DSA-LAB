@@ -1,38 +1,46 @@
-//wap to remove duplicate elements from an array
 #include <stdio.h>
+#include <stdlib.h>
 
-void deleteDuplicates(int array[], int *size) {
-    for (int i = 0; i < *size; i++) {
-        for (int j = i + 1; j < *size; j++) {
-            if (array[i] == array[j]) {
-                // Shift elements to the left to remove the duplicate
-                for (int k = j; k < (*size) - 1; k++) {
-                    array[k] = array[k + 1];
-                }
-                (*size)--;
-                j--; // Re-check the current index, as it has a new element after the shift
-            }
-        }
+#define MAX_SIZE 100
+
+int stack[MAX_SIZE];
+int top = -1;
+
+void push(int element)
+{
+    if (top == MAX_SIZE - 1)
+    {
+        printf("Stack overflow\n");
+        return;
     }
+    stack[++top] = element;
 }
 
-int main() {
-    int array[] = {2, 4, 6, 4, 8, 2, 10, 6};
-    int size = sizeof(array) / sizeof(array[0]);
-
-    printf("Original array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+int pop()
+{
+    if (top == -1)
+    {
+        printf("Stack underflow\n");
+        return -1;
     }
-    printf("\n");
+    return stack[top--];
+}
 
-    deleteDuplicates(array, &size);
-
-    printf("Array with duplicates removed: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
+void hanoi(int n, char from, char to, char aux)
+{
+    if (n == 1)
+    {
+        printf("Move disk 1 from rod %c to rod %c\n", from, to);
+        return;
     }
-    printf("\n");
+    hanoi(n - 1, from, aux, to);
+    printf("Move disk %d from rod %c to rod %c\n", n, from, to);
+    hanoi(n - 1, aux, to, from);
+}
 
+int main()
+{
+    int n = 3;               // number of disks
+    hanoi(n, 'A', 'C', 'B'); // A, B and C are the name of rods
     return 0;
 }

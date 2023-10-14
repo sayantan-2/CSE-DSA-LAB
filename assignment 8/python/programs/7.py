@@ -1,10 +1,19 @@
-#a python program to delete duplicate elements from array
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
 
-arr=[1,2,3,4,5,6,7,8,9,10,1,2,3,4,5,6,7,8,9,10]
-arr2=[]
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
 
-for i in range(len(arr)):
-        if arr[i] not in arr[i+1:len(arr)]:
-            arr2.append(arr[i])
+        arr[j + 1] = key
 
-print(arr2)
+
+# Example usage:
+my_list = [64, 34, 25, 12, 22, 11, 90]
+
+insertion_sort(my_list)
+
+print("Sorted array using Insertion Sort:")
+print(my_list)

@@ -1,5 +1,30 @@
-# Write a program to find frequency of a given number ‘k’
-arr=[5, 2, 9, 1, 8, 3, 7, 6, 10, 4, 2, 6, 3, 1, 9, 7, 8, 4, 10, 5]
-k=int(input("enter the number:"))
-count=arr.count(k)
-print(count)
+class Stack:
+    def __init__(self):
+        self.items = []
+
+    def push(self, item):
+        self.items.append(item)
+
+    def pop(self):
+        return self.items.pop()
+
+    def is_empty(self):
+        return len(self.items) == 0
+
+
+def reverse_string(string):
+    stack = Stack()
+    for character in string:
+        stack.push(character)
+
+    reversed_string = ""
+    while not stack.is_empty():
+        reversed_string += stack.pop()
+
+    return reversed_string
+
+
+# Example usage
+string = input("Enter a string: ")
+print("Original string:", string)
+print("Reversed string:", reverse_string(string))

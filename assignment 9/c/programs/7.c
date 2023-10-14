@@ -1,38 +1,36 @@
-//wap to remove duplicate elements from an array
 #include <stdio.h>
+#include <stdlib.h>
 
-void deleteDuplicates(int array[], int *size) {
-    for (int i = 0; i < *size; i++) {
-        for (int j = i + 1; j < *size; j++) {
-            if (array[i] == array[j]) {
-                // Shift elements to the left to remove the duplicate
-                for (int k = j; k < (*size) - 1; k++) {
-                    array[k] = array[k + 1];
-                }
-                (*size)--;
-                j--; // Re-check the current index, as it has a new element after the shift
-            }
+void findPairsWithDifference(int arr[], int size, int targetDifference)
+{
+    // Create a hash table to store elements
+    int *hashTable = (int *)malloc(size * sizeof(int));
+
+    for (int i = 0; i < size; i++)
+    {
+        // Calculate the complement needed to achieve the target difference
+        int complement = arr[i] - targetDifference;
+
+        // Check if the complement exists in the hash table
+        if (complement >= 0 && hashTable[complement] == 1)
+        {
+            printf("Pair with difference %d found: (%d, %d)\n", targetDifference, complement, arr[i]);
         }
+
+        // Add the current element to the hash table
+        hashTable[arr[i]] = 1;
     }
+
+    free(hashTable);
 }
 
-int main() {
-    int array[] = {2, 4, 6, 4, 8, 2, 10, 6};
-    int size = sizeof(array) / sizeof(array[0]);
+int main()
+{
+    int arr[] = {4, 7, 1, 2, 5, 3};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int targetDifference = 2;
 
-    printf("Original array: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
-
-    deleteDuplicates(array, &size);
-
-    printf("Array with duplicates removed: ");
-    for (int i = 0; i < size; i++) {
-        printf("%d ", array[i]);
-    }
-    printf("\n");
+    findPairsWithDifference(arr, size, targetDifference);
 
     return 0;
 }

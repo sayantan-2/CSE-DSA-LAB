@@ -1,5 +1,4 @@
-*
-#*
-*#*
-#*#*
-*#*#*
+Queue elements are: 10 20 30
+10 dequeued from the queue
+20 dequeued from the queue
+Queue elements are: 30

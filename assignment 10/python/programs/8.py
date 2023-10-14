@@ -1,17 +1,30 @@
-#python program to find 2nd highest number in an array
-def find_second_highest(arr):
-    if len(arr) < 2:
-        return "Array should have at least 2 elements"
-    highest = max(arr[0], arr[1])
-    second_highest = min(arr[0], arr[1])
-    for i in range(2, len(arr)):
-        if arr[i] > highest:
-            second_highest = highest
-            highest = arr[i]
-        elif arr[i] > second_highest and arr[i] != highest:
-            second_highest = arr[i]
-    return second_highest
- 
-arr=[5, 2, 9, 1, 8, 3, 7, 6, 10, 4, 2, 6, 3, 1, 9, 7, 8, 4, 10, 2s5]
-second_highest = find_second_highest(arr)
-print(second_highest)
+from collections import defaultdict
+
+
+class Graph:
+    def __init__(self):
+        self.graph = defaultdict(list)
+
+    def add_edge(self, u, v):
+        self.graph[u].append(v)
+        self.graph[v].append(u)  # For an undirected graph
+
+    def print_adjacency_list(self):
+        for node in self.graph:
+            neighbors = self.graph[node]
+            neighbor_str = " -> ".join(map(str, neighbors))
+            print(f"{node} -> {neighbor_str}")
+
+
+# Example usage:
+if __name__ == "__main__":
+    g = Graph()
+    g.add_edge(1, 2)
+    g.add_edge(1, 3)
+    g.add_edge(2, 3)
+    g.add_edge(2, 4)
+    g.add_edge(3, 4)
+    g.add_edge(4, 5)
+
+    print("Adjacency List:")
+    g.print_adjacency_list()

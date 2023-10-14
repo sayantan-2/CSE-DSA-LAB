@@ -1,57 +1,124 @@
-// Write a program to merge two sorted array of length M & N
-
 #include <stdio.h>
+#include <stdlib.h>
 
-void mergeArrays(int array1[], int M, int array2[], int N, int mergedArray[]) {
-    int i = 0, j = 0, k = 0;
+// Define a structure for a node in the binary tree
+typedef struct Node
+{
+    char *data;
+    struct Node *left;
+    struct Node *right;
+} Node;
 
-    while (i < M && j < N) {
-        if (array1[i] <= array2[j]) {
-            mergedArray[k++] = array1[i++];
-        } else {
-            mergedArray[k++] = array2[j++];
-        }
+// Define a structure for the queue
+typedef struct QueueNode
+{
+    Node *data;
+    struct QueueNode *next;
+} QueueNode;
+
+typedef struct
+{
+    QueueNode *front;
+    QueueNode *rear;
+} Queue;
+
+// Function to create a new queue
+Queue *createQueue()
+{
+    Queue *queue = (Queue *)malloc(sizeof(Queue));
+    queue->front = NULL;
+    queue->rear = NULL;
+    return queue;
+}
+
+// Function to check if the queue is empty
+int isQueueEmpty(Queue *queue)
+{
+    return queue->front == NULL;
+}
+
+// Function to enqueue a node into the queue
+void enqueue(Queue *queue, Node *node)
+{
+    QueueNode *newNode = (QueueNode *)malloc(sizeof(QueueNode));
+    newNode->data = node;
+    newNode->next = NULL;
+    if (isQueueEmpty(queue))
+    {
+        queue->front = queue->rear = newNode;
     }
-
-    // Copy the remaining elements from array1, if any
-    while (i < M) {
-        mergedArray[k++] = array1[i++];
-    }
-
-    // Copy the remaining elements from array2, if any
-    while (j < N) {
-        mergedArray[k++] = array2[j++];
+    else
+    {
+        queue->rear->next = newNode;
+        queue->rear = newNode;
     }
 }
 
-int main() {
-    int array1[] = {1, 3, 5, 7, 9};
-    int M = sizeof(array1) / sizeof(array1[0]);
-
-    int array2[] = {2, 4, 6, 8, 10, 12};
-    int N = sizeof(array2) / sizeof(array2[0]);
-
-    int mergedArray[M + N];
-
-    printf("Array 1: ");
-    for (int i = 0; i < M; i++) {
-        printf("%d ", array1[i]);
+// Function to dequeue a node from the queue
+Node *dequeue(Queue *queue)
+{
+    if (isQueueEmpty(queue))
+    {
+        return NULL;
     }
-    printf("\n");
+    QueueNode *temp = queue->front;
+    Node *node = temp->data;
+    queue->front = queue->front->next;
+    free(temp);
+    return node;
+}
 
-    printf("Array 2: ");
-    for (int i = 0; i < N; i++) {
-        printf("%d ", array2[i]);
+// Function to generate binary numbers from 1 to n
+void generateBinaryNumbers(int n)
+{
+    if (n < 1)
+    {
+        return;
     }
-    printf("\n");
 
-    mergeArrays(array1, M, array2, N, mergedArray);
+    Queue *queue = createQueue();
+    Node *root = (Node *)malloc(sizeof(Node));
+    root->data = "1";
+    root->left = root->right = NULL;
 
-    printf("Merged and sorted array: ");
-    for (int i = 0; i < M + N; i++) {
-        printf("%d ", mergedArray[i]);
+    enqueue(queue, root);
+
+    for (int i = 0; i < n; i++)
+    {
+        Node *current = dequeue(queue);
+        printf("%s\n", current->data);
+
+        Node *left = (Node *)malloc(sizeof(Node));
+        left->data = (char *)malloc(2 * sizeof(char));
+        sprintf(left->data, "%s0", current->data);
+        left->left = left->right = NULL;
+        current->left = left;
+        enqueue(queue, left);
+
+        Node *right = (Node *)malloc(sizeof(Node));
+        right->data = (char *)malloc(2 * sizeof(char));
+        sprintf(right->data, "%s1", current->data);
+        right->left = right->right = NULL;
+        current->right = right;
+        enqueue(queue, right);
     }
-    printf("\n");
 
+    // Clean up the queue and free allocated memory
+    while (!isQueueEmpty(queue))
+    {
+        Node *node = dequeue(queue);
+        free(node->data);
+        free(node);
+    }
+    free(queue);
+}
+
+int main()
+{
+    int n;
+    printf("Enter a positive number (n): ");
+    scanf("%d", &n);
+    printf("Binary numbers from 1 to %d:\n", n);
+    generateBinaryNumbers(n);
     return 0;
 }

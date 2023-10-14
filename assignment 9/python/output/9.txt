@@ -1,2 +1,1 @@
-enter the number: 5
-2
+Minimum index of a repeating element: 1

@@ -1,17 +1,39 @@
-#python program to find 2nd highest number in an array
-def find_second_highest(arr):
-    if len(arr) < 2:
-        return "Array should have at least 2 elements"
-    highest = max(arr[0], arr[1])
-    second_highest = min(arr[0], arr[1])
-    for i in range(2, len(arr)):
-        if arr[i] > highest:
-            second_highest = highest
-            highest = arr[i]
-        elif arr[i] > second_highest and arr[i] != highest:
-            second_highest = arr[i]
-    return second_highest
- 
-arr=[5, 2, 9, 1, 8, 3, 7, 6, 10, 4, 2, 6, 3, 1, 9, 7, 8, 4, 10, 2s5]
-second_highest = find_second_highest(arr)
-print(second_highest)
+class QueueUsingStacks:
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+
+    def is_empty(self):
+        return not self.stack1 and not self.stack2
+
+    def enqueue(self, item):
+        self.stack1.append(item)
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty. Cannot dequeue.")
+            return None
+
+        if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+
+        return self.stack2.pop()
+
+
+# Example usage:
+if __name__ == "__main__":
+    queue = QueueUsingStacks()
+
+    queue.enqueue(10)
+    queue.enqueue(20)
+    queue.enqueue(30)
+
+    print("Dequeued:", queue.dequeue())
+    print("Dequeued:", queue.dequeue())
+
+    queue.enqueue(40)
+    queue.enqueue(50)
+
+    print("Dequeued:", queue.dequeue())
+    print("Is queue empty?", queue.is_empty())

@@ -1,2 +1,9 @@
-Enter the index of the element to be deleted: 4
-[1, 2, 3, 4, 6, 7, 8, 9, 10]
+Priority Queue:
+Priority: 1, Item: Task C
+Priority: 3, Item: Task A
+Priority: 2, Item: Task B
+Priority: 4, Item: Task D
+Dequeued: Task C
+Dequeued: Task B
+Dequeued: Task A
+Dequeued: Task D

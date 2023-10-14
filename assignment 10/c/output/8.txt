@@ -1,2 +1,5 @@
-Array: 10 5 8 20 15 7 
-The second highest element is: 15
+Adjacency list for vertex 0: 4 -> 1 -> NULL
+Adjacency list for vertex 1: 4 -> 3 -> 2 -> 0 -> NULL
+Adjacency list for vertex 2: 3 -> 1 -> NULL
+Adjacency list for vertex 3: 4 -> 2 -> 1 -> NULL
+Adjacency list for vertex 4: 3 -> 1 -> 0 -> NULL

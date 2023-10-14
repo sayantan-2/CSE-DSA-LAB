@@ -1,1 +1,4 @@
-10
+Dequeued: 10
+Dequeued: 20
+Dequeued: 30
+Is queue empty? False

@@ -1,2 +1,1 @@
-Enter limit-5
-40
+Maximum length subarray with sum 6 is [2, 4]

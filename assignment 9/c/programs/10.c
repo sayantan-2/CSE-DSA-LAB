@@ -1,57 +1,83 @@
-// Write a program to merge two sorted array of length M & N
-
 #include <stdio.h>
+#include <stdlib.h>
 
-void mergeArrays(int array1[], int M, int array2[], int N, int mergedArray[]) {
-    int i = 0, j = 0, k = 0;
+typedef struct
+{
+    int value;
+    int frequency;
+    int index;
+} Element;
 
-    while (i < M && j < N) {
-        if (array1[i] <= array2[j]) {
-            mergedArray[k++] = array1[i++];
-        } else {
-            mergedArray[k++] = array2[j++];
+int compareElements(const void *a, const void *b)
+{
+    Element *elementA = (Element *)a;
+    Element *elementB = (Element *)b;
+
+    // Sort by frequency in ascending order
+    if (elementA->frequency < elementB->frequency)
+        return -1;
+    if (elementA->frequency > elementB->frequency)
+        return 1;
+
+    // If frequencies are equal, sort by index in ascending order
+    if (elementA->index < elementB->index)
+        return -1;
+    if (elementA->index > elementB->index)
+        return 1;
+
+    return 0;
+}
+
+void sortByFrequencyAndIndex(int arr[], int size)
+{
+    Element *elements = (Element *)malloc(size * sizeof(Element));
+
+    // Initialize the Element array with values, frequencies, and indices
+    for (int i = 0; i < size; i++)
+    {
+        elements[i].value = arr[i];
+        elements[i].frequency = 0;
+        elements[i].index = i;
+    }
+
+    // Count the frequency of each element
+    for (int i = 0; i < size; i++)
+    {
+        int value = elements[i].value;
+        elements[i].frequency = 1;
+
+        for (int j = i + 1; j < size; j++)
+        {
+            if (elements[j].value == value)
+            {
+                elements[i].frequency++;
+                elements[j].value = -1; // Mark as seen
+            }
         }
     }
 
-    // Copy the remaining elements from array1, if any
-    while (i < M) {
-        mergedArray[k++] = array1[i++];
+    // Sort the elements using the custom comparison function
+    qsort(elements, size, sizeof(Element), compareElements);
+
+    // Print the sorted elements
+    printf("Sorted by frequency and index:\n");
+    for (int i = 0; i < size; i++)
+    {
+        if (elements[i].value != -1)
+        {
+            printf("%d ", elements[i].value);
+        }
     }
 
-    // Copy the remaining elements from array2, if any
-    while (j < N) {
-        mergedArray[k++] = array2[j++];
-    }
+    free(elements);
 }
 
-int main() {
-    int array1[] = {1, 3, 5, 7, 9};
-    int M = sizeof(array1) / sizeof(array1[0]);
+int main()
+{
+    int arr[] = {2, 3, 2, 4, 2, 6, 5, 4, 5, 3};
+    int size = sizeof(arr) / sizeof(arr[0]);
 
-    int array2[] = {2, 4, 6, 8, 10, 12};
-    int N = sizeof(array2) / sizeof(array2[0]);
-
-    int mergedArray[M + N];
-
-    printf("Array 1: ");
-    for (int i = 0; i < M; i++) {
-        printf("%d ", array1[i]);
-    }
-    printf("\n");
-
-    printf("Array 2: ");
-    for (int i = 0; i < N; i++) {
-        printf("%d ", array2[i]);
-    }
-    printf("\n");
-
-    mergeArrays(array1, M, array2, N, mergedArray);
-
-    printf("Merged and sorted array: ");
-    for (int i = 0; i < M + N; i++) {
-        printf("%d ", mergedArray[i]);
-    }
-    printf("\n");
+    sortByFrequencyAndIndex(arr, size);
 
     return 0;
 }
