@@ -1,25 +1,29 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
 
 // Structure for a node
-struct Node {
+struct Node
+{
     int data;
     struct Node *next;
     struct Node *prev;
 };
 
 // Function to insert at the end
-void insert(struct Node** start, int value)
+void insert(struct Node **start, int value)
 {
     // If the list is empty, create a single node
-    if (*start == NULL) {
-        struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+    if (*start == NULL)
+    {
+        struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
         new_node->data = value;
         new_node->next = new_node->prev = NULL;
         *start = new_node;
-    } else {
-        struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
-        struct Node* last = *start;
+    }
+    else
+    {
+        struct Node *new_node = (struct Node *)malloc(sizeof(struct Node));
+        struct Node *last = *start;
         new_node->data = value;
         new_node->next = NULL;
         while (last->next != NULL)
@@ -30,22 +34,24 @@ void insert(struct Node** start, int value)
 }
 
 // Function to print nodes in a given doubly linked list
-void printList(struct Node* node)
+void printList(struct Node *node)
 {
-    while (node != NULL) {
+    while (node != NULL)
+    {
         printf("%d ", node->data);
         node = node->next;
     }
 }
 
 // Function to reverse a doubly linked list
-struct Node* reverse(struct Node* node)
+struct Node *reverse(struct Node *node)
 {
-    struct Node* temp = NULL;
-    struct Node* current = node;
+    struct Node *temp = NULL;
+    struct Node *current = node;
 
     // Swap next and prev for all nodes of doubly linked list
-    while (current != NULL) {
+    while (current != NULL)
+    {
         temp = current->prev;
         current->prev = current->next;
         current->next = temp;
@@ -53,7 +59,7 @@ struct Node* reverse(struct Node* node)
     }
 
     // Before changing the head, check for the cases like empty list and list with only one node
-    if(temp != NULL )
+    if (temp != NULL)
         node = temp->prev;
     return node;
 }
@@ -61,7 +67,7 @@ struct Node* reverse(struct Node* node)
 // Driver program to test above
 int main()
 {
-    struct Node* head = NULL;
+    struct Node *head = NULL;
     insert(&head, 1);
     insert(&head, 2);
     insert(&head, 3);

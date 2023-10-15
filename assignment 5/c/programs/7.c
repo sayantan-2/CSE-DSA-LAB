@@ -2,16 +2,19 @@
 #include <stdlib.h>
 
 // Define the structure for a node in the doubly linked list
-struct Node {
+struct Node
+{
     char data;
-    struct Node* prev;
-    struct Node* next;
+    struct Node *prev;
+    struct Node *next;
 };
 
 // Function to create a new node
-struct Node* createNode(char data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if (newNode == NULL) {
+struct Node *createNode(char data)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    if (newNode == NULL)
+    {
         printf("Memory allocation failed.\n");
         exit(1);
     }
@@ -22,10 +25,12 @@ struct Node* createNode(char data) {
 }
 
 // Function to insert a node at the end of the doubly linked list
-struct Node* insertAtEnd(struct Node* head, char data) {
-    struct Node* newNode = createNode(data);
+struct Node *insertAtEnd(struct Node *head, char data)
+{
+    struct Node *newNode = createNode(data);
 
-    if (head == NULL) {
+    if (head == NULL)
+    {
         newNode->next = newNode;
         newNode->prev = newNode;
         return newNode;
@@ -40,31 +45,40 @@ struct Node* insertAtEnd(struct Node* head, char data) {
 }
 
 // Function to remove a character from the doubly linked list
-struct Node* removeCharacter(struct Node* head, char target) {
-    if (head == NULL) {
+struct Node *removeCharacter(struct Node *head, char target)
+{
+    if (head == NULL)
+    {
         printf("List is empty.\n");
         return NULL;
     }
 
-    struct Node* current = head;
+    struct Node *current = head;
 
-    do {
-        if (current->data == target) {
+    do
+    {
+        if (current->data == target)
+        {
             // If the node to be removed is the head node
-            if (current == head) {
+            if (current == head)
+            {
                 head = head->next;
                 head->prev = current->prev;
                 current->prev->next = head;
                 free(current);
                 current = head; // Move to the next node
-            } else {
-                struct Node* temp = current;
+            }
+            else
+            {
+                struct Node *temp = current;
                 current->prev->next = current->next;
                 current->next->prev = current->prev;
                 current = current->next; // Move to the next node
                 free(temp);
             }
-        } else {
+        }
+        else
+        {
             current = current->next;
         }
     } while (current != head);
@@ -73,15 +87,18 @@ struct Node* removeCharacter(struct Node* head, char target) {
 }
 
 // Function to display the doubly linked list
-void display(struct Node* head) {
-    if (head == NULL) {
+void display(struct Node *head)
+{
+    if (head == NULL)
+    {
         printf("List is empty.\n");
         return;
     }
 
-    struct Node* current = head;
+    struct Node *current = head;
 
-    do {
+    do
+    {
         printf("%c -> ", current->data);
         current = current->next;
     } while (current != head);
@@ -89,8 +106,9 @@ void display(struct Node* head) {
     printf("\n");
 }
 
-int main() {
-    struct Node* head = NULL;
+int main()
+{
+    struct Node *head = NULL;
 
     // Initialize a predefined doubly linked list with characters
     head = insertAtEnd(head, 'A');

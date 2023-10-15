@@ -2,16 +2,19 @@
 #include <stdlib.h>
 
 // Define the structure for a node in the doubly circular linked list
-struct Node {
+struct Node
+{
     int data;
-    struct Node* prev;
-    struct Node* next;
+    struct Node *prev;
+    struct Node *next;
 };
 
 // Function to create a new node
-struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if (newNode == NULL) {
+struct Node *createNode(int data)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    if (newNode == NULL)
+    {
         printf("Memory allocation failed.\n");
         exit(1);
     }
@@ -22,10 +25,12 @@ struct Node* createNode(int data) {
 }
 
 // Function to insert a node at the end of the doubly circular linked list
-struct Node* insertAtEnd(struct Node* head, int data) {
-    struct Node* newNode = createNode(data);
+struct Node *insertAtEnd(struct Node *head, int data)
+{
+    struct Node *newNode = createNode(data);
 
-    if (head == NULL) {
+    if (head == NULL)
+    {
         newNode->next = newNode;
         newNode->prev = newNode;
         return newNode;
@@ -40,21 +45,26 @@ struct Node* insertAtEnd(struct Node* head, int data) {
 }
 
 // Function to delete a node at a specific position in the doubly circular linked list
-struct Node* deleteAtPosition(struct Node* head, int position) {
-    if (head == NULL) {
+struct Node *deleteAtPosition(struct Node *head, int position)
+{
+    if (head == NULL)
+    {
         printf("List is empty.\n");
         return NULL;
     }
 
-    if (position <= 0) {
+    if (position <= 0)
+    {
         printf("Invalid position.\n");
         return head;
     }
 
-    if (position == 1) {
-        struct Node* temp = head;
+    if (position == 1)
+    {
+        struct Node *temp = head;
 
-        if (head->next == head) {
+        if (head->next == head)
+        {
             free(head);
             return NULL; // List becomes empty
         }
@@ -67,16 +77,18 @@ struct Node* deleteAtPosition(struct Node* head, int position) {
         return head;
     }
 
-    struct Node* current = head;
+    struct Node *current = head;
     int count = 1;
 
     // Find the node to be deleted
-    while (count < position && current->next != head) {
+    while (count < position && current->next != head)
+    {
         current = current->next;
         count++;
     }
 
-    if (count < position) {
+    if (count < position)
+    {
         printf("Position out of range.\n");
         return head;
     }
@@ -89,15 +101,18 @@ struct Node* deleteAtPosition(struct Node* head, int position) {
 }
 
 // Function to display the doubly circular linked list
-void display(struct Node* head) {
-    if (head == NULL) {
+void display(struct Node *head)
+{
+    if (head == NULL)
+    {
         printf("List is empty.\n");
         return;
     }
 
-    struct Node* current = head;
+    struct Node *current = head;
 
-    do {
+    do
+    {
         printf("%d -> ", current->data);
         current = current->next;
     } while (current != head);
@@ -105,8 +120,9 @@ void display(struct Node* head) {
     printf("\n");
 }
 
-int main() {
-    struct Node* head = NULL;
+int main()
+{
+    struct Node *head = NULL;
 
     // Initialize a predefined doubly circular linked list
     head = insertAtEnd(head, 10);

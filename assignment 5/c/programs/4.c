@@ -2,15 +2,18 @@
 #include <stdlib.h>
 
 // Define the structure for a node in the circular linked list
-struct Node {
+struct Node
+{
     int data;
-    struct Node* next;
+    struct Node *next;
 };
 
 // Function to create a new node
-struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if (newNode == NULL) {
+struct Node *createNode(int data)
+{
+    struct Node *newNode = (struct Node *)malloc(sizeof(struct Node));
+    if (newNode == NULL)
+    {
         printf("Memory allocation failed.\n");
         exit(1);
     }
@@ -20,15 +23,18 @@ struct Node* createNode(int data) {
 }
 
 // Function to insert a node at the end of the circular linked list
-struct Node* insertAtEnd(struct Node* head, int data) {
-    struct Node* newNode = createNode(data);
-    if (head == NULL) {
+struct Node *insertAtEnd(struct Node *head, int data)
+{
+    struct Node *newNode = createNode(data);
+    if (head == NULL)
+    {
         newNode->next = newNode; // Circular link to itself
         return newNode;
     }
 
-    struct Node* last = head;
-    while (last->next != head) {
+    struct Node *last = head;
+    while (last->next != head)
+    {
         last = last->next;
     }
 
@@ -38,29 +44,37 @@ struct Node* insertAtEnd(struct Node* head, int data) {
 }
 
 // Function to delete a node with a specific data value from the circular linked list
-struct Node* deleteElement(struct Node* head, int key) {
-    if (head == NULL) {
+struct Node *deleteElement(struct Node *head, int key)
+{
+    if (head == NULL)
+    {
         printf("List is empty.\n");
         return NULL;
     }
 
-    struct Node* current = head;
-    struct Node* previous = NULL;
+    struct Node *current = head;
+    struct Node *previous = NULL;
 
     // Find the node to be deleted
-    do {
-        if (current->data == key) {
-            if (previous == NULL) {
+    do
+    {
+        if (current->data == key)
+        {
+            if (previous == NULL)
+            {
                 // If the node to be deleted is the head node
-                struct Node* last = head;
-                while (last->next != head) {
+                struct Node *last = head;
+                while (last->next != head)
+                {
                     last = last->next;
                 }
                 head = head->next;
                 last->next = head;
                 free(current);
                 return head;
-            } else {
+            }
+            else
+            {
                 previous->next = current->next;
                 free(current);
                 return head;
@@ -75,14 +89,17 @@ struct Node* deleteElement(struct Node* head, int key) {
 }
 
 // Function to display the circular linked list
-void display(struct Node* head) {
-    if (head == NULL) {
+void display(struct Node *head)
+{
+    if (head == NULL)
+    {
         printf("List is empty.\n");
         return;
     }
 
-    struct Node* current = head;
-    do {
+    struct Node *current = head;
+    do
+    {
         printf("%d -> ", current->data);
         current = current->next;
     } while (current != head);
@@ -90,8 +107,9 @@ void display(struct Node* head) {
     printf("\n");
 }
 
-int main() {
-    struct Node* head = NULL;
+int main()
+{
+    struct Node *head = NULL;
 
     // Initialize a predefined circular linked list
     head = insertAtEnd(head, 10);

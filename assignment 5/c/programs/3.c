@@ -1,22 +1,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct Node {
+typedef struct Node
+{
     int data;
-    struct Node* next;
-    struct Node* prev;
+    struct Node *next;
+    struct Node *prev;
 } Node;
 
-Node* newNode(int data) {
-    Node* node = (Node*)malloc(sizeof(Node));
+Node *newNode(int data)
+{
+    Node *node = (Node *)malloc(sizeof(Node));
     node->data = data;
     node->next = node->prev = NULL;
     return node;
 }
 
-void insertEnd(Node** start, int value) {
-    if (*start == NULL) {
-        Node* new_node = newNode(value);
+void insertEnd(Node **start, int value)
+{
+    if (*start == NULL)
+    {
+        Node *new_node = newNode(value);
         new_node->next = new_node->prev = new_node;
         *start = new_node;
         return;
@@ -24,7 +28,7 @@ void insertEnd(Node** start, int value) {
 
     Node *last = (*start)->prev;
 
-    Node* new_node = newNode(value);
+    Node *new_node = newNode(value);
 
     new_node->next = *start;
 
@@ -35,18 +39,21 @@ void insertEnd(Node** start, int value) {
     last->next = new_node;
 }
 
-void display(Node* start) {
-    Node* temp = start;
+void display(Node *start)
+{
+    Node *temp = start;
 
-    while (temp->next != start) {
+    while (temp->next != start)
+    {
         printf("%d ", temp->data);
         temp = temp->next;
     }
     printf("%d ", temp->data);
 }
 
-int main() {
-    Node* start = NULL;
+int main()
+{
+    Node *start = NULL;
 
     insertEnd(&start, 5);
     insertEnd(&start, 4);
