@@ -13,29 +13,41 @@ void display();
 
 int main()
 {
-    int choice, data;
+    int choice, data, n;
     front = rear = NULL;
+
+    printf("\n1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
 
     while (1)
     {
-        printf("\n1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
-        printf("Enter your choice: ");
+        printf("\nEnter your choice: ");
         scanf("%d", &choice);
 
         switch (choice)
         {
         case 1:
-            printf("Enter data to be enqueued: ");
-            scanf("%d", &data);
-            enq(data);
+            printf("Enter the number of elements to be enqueued: ");
+            scanf("%d", &n);
+            for (int i = 0; i < n; i++)
+            {
+                printf("Enter data to be enqueued: ");
+                scanf("%d", &data);
+                enq(data);
+            }
             break;
         case 2:
-            deq();
+            printf("Enter the number of elements to be dequeued: ");
+            scanf("%d", &n);
+            for (int i = 0; i < n; i++)
+            {
+                deq();
+            }
             break;
         case 3:
             display();
             break;
         case 4:
+            printf("Exiting from app.\n");
             exit(0);
         default:
             printf("Invalid choice!\n");

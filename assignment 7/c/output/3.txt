@@ -2,44 +2,18 @@
 2. Dequeue
 3. Display
 4. Exit
+
 Enter your choice: 1
+Enter the number of elements to be enqueued: 3
 Enter data to be enqueued: 10
-
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
-Enter your choice: 1
 Enter data to be enqueued: 20
-
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
-Enter your choice: 1
 Enter data to be enqueued: 30
 
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
-Enter your choice: 3
-10 20 30
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
 Enter your choice: 2
+Enter the number of elements to be dequeued: 1
 Dequeued element: 10
 
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
 Enter your choice: 3
 20 30
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
 Enter your choice: 4
+Exiting from app.
