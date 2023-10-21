@@ -1,46 +1,17 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-#define MAX_SIZE 100
-
-int stack[MAX_SIZE];
-int top = -1;
-
-void push(int element)
-{
-    if (top == MAX_SIZE - 1)
-    {
-        printf("Stack overflow\n");
+void TowerOfHanoi(int n, char from_rod, char to_rod, char aux_rod) {
+    if (n == 1) {
+        printf("\n Move disk 1 from rod %c to rod %c", from_rod, to_rod);
         return;
     }
-    stack[++top] = element;
+    TowerOfHanoi(n - 1, from_rod, aux_rod, to_rod);
+    printf("\n Move disk %d from rod %c to rod %c", n, from_rod, to_rod);
+    TowerOfHanoi(n - 1, aux_rod, to_rod, from_rod);
 }
 
-int pop()
-{
-    if (top == -1)
-    {
-        printf("Stack underflow\n");
-        return -1;
-    }
-    return stack[top--];
-}
-
-void hanoi(int n, char from, char to, char aux)
-{
-    if (n == 1)
-    {
-        printf("Move disk 1 from rod %c to rod %c\n", from, to);
-        return;
-    }
-    hanoi(n - 1, from, aux, to);
-    printf("Move disk %d from rod %c to rod %c\n", n, from, to);
-    hanoi(n - 1, aux, to, from);
-}
-
-int main()
-{
-    int n = 3;               // number of disks
-    hanoi(n, 'A', 'C', 'B'); // A, B and C are the name of rods
+int main() {
+    int n = 3; // Number of disks
+    TowerOfHanoi(n, 'A', 'C', 'B');  // A, B and C are names of rods
     return 0;
 }
