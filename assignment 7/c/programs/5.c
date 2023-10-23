@@ -139,15 +139,15 @@ void display()
 int main()
 {
     int choice, item;
+    printf("\n1. Insert at front\n");
+    printf("2. Insert at rear\n");
+    printf("3. Delete from front\n");
+    printf("4. Delete from rear\n");
+    printf("5. Display\n");
+    printf("6. Exit\n");
     while (1)
     {
-        printf("\n1. Insert at front\n");
-        printf("2. Insert at rear\n");
-        printf("3. Delete from front\n");
-        printf("4. Delete from rear\n");
-        printf("5. Display\n");
-        printf("6. Exit\n");
-        printf("Enter your choice: ");
+        printf("\nEnter your choice: ");
         scanf("%d", &choice);
 
         switch (choice)

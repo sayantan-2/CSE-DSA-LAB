@@ -4,61 +4,26 @@
 4. Delete from rear
 5. Display
 6. Exit
+
 Enter your choice: 1
 Enter element to insert at front: 10
 Inserted 10 at the front.
 
-1. Insert at front
-2. Insert at rear
-3. Delete from front
-4. Delete from rear
-5. Display
-6. Exit
 Enter your choice: 2
 Enter element to insert at rear: 20
 Inserted 20 at the rear.
 
-1. Insert at front
-2. Insert at rear
-3. Delete from front
-4. Delete from rear
-5. Display
-6. Exit
 Enter your choice: 5
 Deque: 10 20
 
-1. Insert at front
-2. Insert at rear
-3. Delete from front
-4. Delete from rear
-5. Display
-6. Exit
 Enter your choice: 3
 Deleted 10 from the front.
 
-1. Insert at front
-2. Insert at rear
-3. Delete from front
-4. Delete from rear
-5. Display
-6. Exit
 Enter your choice: 4
 Deleted 20 from the rear.
 
-1. Insert at front
-2. Insert at rear
-3. Delete from front
-4. Delete from rear
-5. Display
-6. Exit
 Enter your choice: 5
 Deque is empty.
 
-1. Insert at front
-2. Insert at rear
-3. Delete from front
-4. Delete from rear
-5. Display
-6. Exit
 Enter your choice: 6
 Exiting the program.

@@ -2,55 +2,32 @@
 2. Dequeue
 3. Display
 4. Exit
+
 Enter your choice: 1
 Enter data: 10
 Enter priority: 3
 Inserted 10 with priority 3.
 
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
 Enter your choice: 1
 Enter data: 20
 Enter priority: 1
 Inserted 20 with priority 1.
 
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
 Enter your choice: 1
 Enter data: 30
 Enter priority: 2
 Inserted 30 with priority 2.
 
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
 Enter your choice: 3
 Priority Queue:
 (20, 1) (30, 2) (10, 3)
 
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
 Enter your choice: 2
 Dequeued 20 with priority 1.
 
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
 Enter your choice: 3
 Priority Queue:
 (30, 2) (10, 3)
 
-1. Enqueue
-2. Dequeue
-3. Display
-4. Exit
 Enter your choice: 4
 Exiting the program.
