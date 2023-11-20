@@ -13,7 +13,7 @@ This repository is a collection of solutions for Data Structures and Algorithms 
 3. Open the solution file in your preferred text editor or IDE to study the code.
 
 ## Related Links
-- [DSA Solutions Website Repository]: This is the repository for the website that hosts these solutions.
+- [DSA Solutions Website Repository](https://github.com/sayantan-2/DSA-SITE): This is the repository for the website that hosts these solutions.
 - [DSA Solutions Website](https://codeyard.netlify.app): This is the actual website where you can view the solutions online.
 
 ## Contributing
@@ -26,7 +26,3 @@ The solutions in this repository are implemented using the following programming
 
 ## Show Your Support
 If you find this repository helpful, please consider giving it a star :star: on GitHub. Your support is greatly appreciated and helps motivate continued development and maintenance. Thank you!
-
-Please note that this README is just a suggestion and you may need to modify it according to your project's requirements. 😊
-
-Please replace `^1^` and `^2^` with the actual links to your DSA Solutions Website Repository and DSA Solutions Website respectively.
